@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double radio, area;
+    const double PI = 3.141592653589793; // Constante para π
+    
+    cout << "Ingrese el radio del circulo: ";
+    cin >> radio; // Lee el valor del radio ingresado por el usuario
+    
+    area = PI * radio * radio; // Fórmula del área del círculo
+    
+    cout << "El area del circulo es: " << area << endl;
+    
+    return 0;
+}
