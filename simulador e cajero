@@ -1,0 +1,111 @@
+#include <iostream>
+using namespace std;
+
+class CajeroAutomatico {
+private:
+    double saldo;
+    bool sesionAbierta;
+
+public:
+    // Constructor que inicializa el saldo y el estado de la sesión
+    CajeroAutomatico() {
+        saldo = 1000.00;
+        sesionAbierta = false;
+    }
+
+    // Método para iniciar sesión
+    void iniciarSesion() {
+        string pin;
+        cout << "Bienvenido al Cajero Automático\n";
+        cout << "Por favor, ingrese su PIN: ";
+        cin >> pin;
+
+        if (pin == "1234") {  // PIN ficticio para el ejemplo
+            sesionAbierta = true;
+            cout << "Sesión iniciada correctamente.\n";
+        } else {
+            cout << "PIN incorrecto. Intente nuevamente.\n";
+        }
+    }
+
+    // Método para consultar el saldo
+    void consultarSaldo() {
+        if (sesionAbierta) {
+            cout << "Su saldo actual es: $" << saldo << endl;
+        } else {
+            cout << "Debe iniciar sesión primero.\n";
+        }
+    }
+
+    // Método para retirar dinero
+    void retirarDinero() {
+        if (sesionAbierta) {
+            double monto;
+            cout << "¿Cuánto desea retirar? $";
+            cin >> monto;
+
+            if (monto <= saldo) {
+                saldo -= monto;
+                cout << "Has retirado $" << monto << ". Su saldo restante es: $" << saldo << endl;
+            } else {
+                cout << "No tiene suficiente saldo para esta transacción.\n";
+            }
+        } else {
+            cout << "Debe iniciar sesión primero.\n";
+        }
+    }
+
+    // Método para cerrar sesión
+    void cerrarSesion() {
+        if (sesionAbierta) {
+            sesionAbierta = false;
+            cout << "Sesión cerrada. Gracias por usar el cajero automático.\n";
+        } else {
+            cout << "No hay ninguna sesión abierta.\n";
+        }
+    }
+};
+
+// Función para mostrar el menú
+void mostrarMenu() {
+    CajeroAutomatico cajero;
+    int opcion;
+
+    while (true) {
+        cout << "\n--- Menú Cajero Automático ---\n";
+        cout << "1. Iniciar sesión\n";
+        cout << "2. Consultar saldo\n";
+        cout << "3. Retirar dinero\n";
+        cout << "4. Cerrar sesión\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cajero.iniciarSesion();
+                break;
+            case 2:
+                cajero.consultarSaldo();
+                break;
+            case 3:
+                cajero.retirarDinero();
+                break;
+            case 4:
+                cajero.cerrarSesion();
+                break;
+            case 5:
+                cout << "Gracias por usar el cajero automático. ¡Adiós!\n";
+                return; // Termina el programa
+            default:
+                cout << "Opción no válida. Intente de nuevo.\n";
+                break;
+        }
+    }
+}
+
+// Función principal
+int main() {
+    mostrarMenu();
+    return 0;
+}
