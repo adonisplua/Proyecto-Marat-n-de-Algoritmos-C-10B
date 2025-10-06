@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int anio;
+
+    cout << "Ingrese un anio: ";
+    cin >> anio;
+
+    // Un año es bisiesto si:
+    // 1. Es divisible entre 4 y no entre 100, o
+    // 2. Es divisible entre 400.
+    if ((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0)) {
+        cout << "El anio " << anio << " ES bisiesto." << endl;
+    } else {
+        cout << "El anio " << anio << " NO es bisiesto." << endl;
+    }
+
+    return 0;
+}
