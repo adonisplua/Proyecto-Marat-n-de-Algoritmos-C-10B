@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double temperatura, resultado;
+    int opcion;
+
+    cout << "Conversor de Temperaturas\n";
+    cout << "---------------------------\n";
+    cout << "1. Convertir de Celsius a Fahrenheit\n";
+    cout << "2. Convertir de Fahrenheit a Celsius\n";
+    cout << "Seleccione una opcion (1 o 2): ";
+    cin >> opcion;
+
+    if (opcion == 1) {
+        cout << "Ingrese la temperatura en grados Celsius: ";
+        cin >> temperatura;
+        resultado = (temperatura * 9.0 / 5.0) + 32.0;
+        cout << "La temperatura en Fahrenheit es: " << resultado << " °F" << endl;
+    } 
+    else if (opcion == 2) {
+        cout << "Ingrese la temperatura en grados Fahrenheit: ";
+        cin >> temperatura;
+        resultado = (temperatura - 32.0) * 5.0 / 9.0;
+        cout << "La temperatura en Celsius es: " << resultado << " °C" << endl;
+    } 
+    else {
+        cout << "Opcion no valida. Debe elegir 1 o 2." << endl;
+    }
+
+    return 0;
+}
