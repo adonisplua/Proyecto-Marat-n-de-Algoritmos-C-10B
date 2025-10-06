@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string> // Necesario para usar cadenas de texto (string)
+using namespace std;
+
+int main() {
+    string nombre;
+    int edad;
+
+    cout << "Ingrese su nombre: ";
+    getline(cin, nombre); // Permite leer el nombre completo (con espacios)
+
+    cout << "Ingrese su edad: ";
+    cin >> edad; // Lee la edad del usuario
+
+    cout << "\nHola, " << nombre << ". Tienes " << edad << " años." << endl;
+
+    return 0;
+}
