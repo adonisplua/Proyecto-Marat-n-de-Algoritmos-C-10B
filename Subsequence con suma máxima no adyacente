@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int maxNonAdjacentSum(vector<int>& nums){
+    int incl=nums[0], excl=0;
+    for(int i=1;i<nums.size();i++){
+        int new_excl=max(incl,excl);
+        incl=excl+nums[i];
+        excl=new_excl;
+    }
+    return max(incl,excl);
+}
+
+int main(){
+    vector<int> nums={5,5,10,100,10,5};
+    cout<<"Suma máxima no adyacente: "<<maxNonAdjacentSum(nums)<<endl;
+    return 0;
+}
