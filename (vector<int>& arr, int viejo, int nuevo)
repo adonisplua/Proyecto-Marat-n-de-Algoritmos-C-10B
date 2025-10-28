@@ -1,0 +1,6 @@
+ Función que recibe un array y un valor, y reemplaza todas las ocurrencias de ese valor por otro dado
+void reemplazar(vector<int>& arr, int viejo, int nuevo) {
+    for (int &num : arr)
+        if (num == viejo)
+            num = nuevo;
+}
