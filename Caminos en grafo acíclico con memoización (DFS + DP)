@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int dfsDP(int u, int dest, vector<vector<int>>& adj, vector<int>& memo){
+    if(u==dest) return 1;
+    if(memo[u]!=-1) return memo[u];
+    int total=0;
+    for(int v: adj[u])
+        total+=dfsDP(v,dest,adj,memo);
+    return memo[u]=total;
+}
+
+int main(){
+    vector<vector<int>> adj={{1,2},{3},{3},{}};
+    vector<int> memo(adj.size(),-1);
+    cout<<"Número de caminos 0→3: "<<dfsDP(0,3,adj,memo)<<endl;
+    return 0;
+}
