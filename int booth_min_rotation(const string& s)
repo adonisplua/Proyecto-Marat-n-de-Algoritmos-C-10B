@@ -1,0 +1,4 @@
+int booth_min_rotation(const string& s) {
+    string S = s + s;
+    int n = s.size();
+    vector<int> f
