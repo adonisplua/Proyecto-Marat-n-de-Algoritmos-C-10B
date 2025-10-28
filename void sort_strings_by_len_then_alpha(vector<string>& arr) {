@@ -1,0 +1,6 @@
+void sort_strings_by_len_then_alpha(vector<string>& arr) {
+    sort(arr.begin(), arr.end(), [](const string& a, const string& b){
+        if (a.size() != b.size()) return a.size() < b.size();
+        return a < b;
+    });
+}
