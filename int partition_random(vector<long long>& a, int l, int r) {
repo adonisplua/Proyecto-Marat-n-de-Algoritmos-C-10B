@@ -1,0 +1,26 @@
+int partition_random(vector<long long>& a, int l, int r) {
+    int pivot_idx = l + rand() % (r - l + 1);
+    long long pivot = a[pivot_idx];
+    swap(a[pivot_idx], a[r]);
+    int i = l;
+    for (int j = l; j < r; ++j) {
+        if (a[j] > pivot) { // para kth más grande: mayores a la izquierda
+            swap(a[i++], a[j]);
+        }
+    }
+    swap(a[i], a[r]);
+    return i;
+}
+long long quickselect_kth_largest(vector<long long>& a, int l, int r, int k) {
+    // k es 1-based: k=1 -> mayor
+    if (l == r) return a[l];
+    int p = partition_random(a, l, r);
+    int left_count = p - l + 1; // número de elementos mayores o iguales al pivote en la partición izquierda
+    if (k == left_count) return a[p];
+    if (k < left_count) return quickselect_kth_largest(a, l, p-1, k);
+    else return quickselect_kth_largest(a, p+1, r, k - left_count);
+}
+long long kth_largest_quickselect(vector<long long> a, int k) {
+    if (k < 1 || k > (int)a.size()) throw out_of_range("k fuera de rango");
+    return quickselect_kth_largest(a, 0, (int)a.size()-1, k);
+}
