@@ -1,0 +1,9 @@
+ Concatenar dos arrays (retorna vector)
+vector<int> concatenarArrays(int arr1[], int n1, int arr2[], int n2) {
+    vector<int> resultado;
+    for (int i = 0; i < n1; i++)
+        resultado.push_back(arr1[i]);
+    for (int i = 0; i < n2; i++)
+        resultado.push_back(arr2[i]);
+    return resultado;
+}
