@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+void cambiarConPuntero(int* p) {
+    *p = 100;
+}
+
+void cambiarConReferencia(int& r) {
+    r = 200;
+}
+
+int main() {
+    int x = 10, y = 10;
+    cambiarConPuntero(&x);
+    cambiarConReferencia(y);
+
+    cout << "x (puntero): " << x << endl;
+    cout << "y (referencia): " << y << endl;
+    return 0;
+}
