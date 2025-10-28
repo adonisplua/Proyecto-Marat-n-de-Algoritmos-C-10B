@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void dfsPaths(int u, int dest, vector<vector<int>>& adj, vector<int>& path, vector<vector<int>>& all){
+    path.push_back(u);
+    if(u==dest) all.push_back(path);
+    else for(int v: adj[u]) dfsPaths(v,dest,adj,path,all);
+    path.pop_back();
+}
+
+int main(){
+    vector<vector<int>> adj={{1,2},{3},{3},{}};
+    vector<vector<int>> all; vector<int> path;
+    dfsPaths(0,3,adj,path,all);
+    cout<<"Caminos 0→3:\n";
+    for(auto &p:all){
+        for(int x:p) cout<<x<<" ";
+        cout<<endl;
+    }
+    return 0;
+}
