@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+void duplicar(int* p) {
+    *p *= 2;
+}
+
+int main() {
+    int n = 7;
+    duplicar(&n);
+    cout << "Valor duplicado: " << n << endl;
+    return 0;
+}
