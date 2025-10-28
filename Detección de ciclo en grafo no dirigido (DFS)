@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool dfsCycle(int v, int parent, vector<vector<int>>& adj, vector<bool>& vis){
+    vis[v]=true;
+    for(int u: adj[v]){
+        if(!vis[u]){
+            if(dfsCycle(u,v,adj,vis)) return true;
+        } else if(u!=parent) return true;
+    }
+    return false;
+}
+
+bool hasCycle(vector<vector<int>>& adj){
+    vector<bool> vis(adj.size(),false);
+    for(int i=0;i<adj.size();i++)
+        if(!vis[i] && dfsCycle(i,-1,adj,vis))
+            return true;
+    return false;
+}
+
+int main(){
+    vector<vector<int>> adj={{1,2},{0,2},{0,1,3},{2}};
+    cout<<"¿Tiene ciclo? "<<(hasCycle(adj)?"Sí":"No")<<endl;
+    return 0;
+}
