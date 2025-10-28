@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+void cambiarValor(int* p) {
+    *p = 100;
+}
+
+int main() {
+    int n = 20;
+    cambiarValor(&n);
+    cout << "Nuevo valor de n: " << n << endl;
+    return 0;
+}
