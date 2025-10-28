@@ -1,0 +1,15 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    map<string,int> m;
+    m["Alice"]=25;
+    m["Bob"]=30;
+    m["Charlie"]=28;
+
+    m["Alice"]=26; // actualizar
+    for(auto &[key,value] : m)
+        cout << key << ": " << value << endl;
+    return 0;
+}
