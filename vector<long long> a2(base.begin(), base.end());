@@ -1,0 +1,5 @@
+   vector<long long> a2(base.begin(), base.end());
+        auto s2 = clk::now();
+        quicksort_lomuto(a2, 0, (int)a2.size()-1);
+        auto e2 = clk::now();
+        cout << " quicksort_lomuto: " << chrono::duration<double>(e2-s2).count() << " s\n";
