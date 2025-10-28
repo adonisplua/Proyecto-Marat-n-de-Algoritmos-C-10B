@@ -1,0 +1,7 @@
+Función que recibe un array y retorna un nuevo array con los elementos al cubo
+vector<int> alCubo(const vector<int>& arr) {
+    vector<int> res;
+    for (int x : arr)
+        res.push_back(xxx);
+    return res;
+}
