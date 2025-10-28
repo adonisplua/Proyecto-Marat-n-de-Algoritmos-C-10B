@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+void push(Nodo*& tope, int valor) {
+    Nodo* nuevo = new Nodo{valor, tope};
+    tope = nuevo;
+}
+
+int pop(Nodo*& tope) {
+    if (!tope) return -1;
+    Nodo* temp = tope;
+    int valor = temp->dato;
+    tope = tope->siguiente;
+    delete temp;
+    return valor;
+}
+
+int main() {
+    Nodo* pila = nullptr;
+    push(pila, 10);
+    push(pila, 20);
+    cout << "Pop: " << pop(pila) << endl;
+    cout << "Pop: " << pop(pila) << endl;
+    return 0;
+}
