@@ -1,0 +1,18 @@
+int median_of_three_idx(vector<long long>& a, int l, int r) {
+    int m = l + (r - l) / 2;
+    if ((a[l] <= a[m] && a[m] <= a[r]) || (a[r] <= a[m] && a[m] <= a[l])) return m;
+    if ((a[m] <= a[l] && a[l] <= a[r]) || (a[r] <= a[l] && a[l] <= a[m])) return l;
+    return r;
+}
+int partition_median3(vector<long long>& a, int l, int r) {
+    int mid = median_of_three_idx(a, l, r);
+    swap(a[mid], a[r]);
+    return partition_lomuto(a, l, r);
+}
+void quicksort_median3(vector<long long>& a, int l, int r) {
+    if (l < r) {
+        int p = partition_median3(a, l, r);
+        quicksort_median3(a, l, p-1);
+        quicksort_median3(a, p+1, r);
+    }
+}
