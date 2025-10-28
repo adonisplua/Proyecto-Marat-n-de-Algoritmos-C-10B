@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+class Motor {
+public:
+    void encender() { cout << "Motor encendido.\n"; }
+};
+
+class Automovil {
+private:
+    Motor motor; // Un automóvil TIENE un motor
+public:
+    void arrancar() {
+        cout << "Arrancando automóvil...\n";
+        motor.encender();
+    }
+};
+
+int main() {
+    Automovil a;
+    a.arrancar();
+    return 0;
+}
