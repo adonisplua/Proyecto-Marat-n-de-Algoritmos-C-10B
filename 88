@@ -1,0 +1,5 @@
+Función que recibe un array y retorna un array con sus elementos en orden inverso sin modificar el original
+vector<int> reverso(const vector<int>& arr) {
+    vector<int> res(arr.rbegin(), arr.rend());
+    return res;
+}
