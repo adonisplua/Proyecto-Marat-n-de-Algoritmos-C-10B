@@ -1,0 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    map<int,string> m;
+    m[1]="uno"; m[2]="dos"; m[3]="tres";
+    for(auto&p:m) cout << p.first << ":" << p.second << " ";
+    cout<<"\n";
+}
