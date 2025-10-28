@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+void ordenarParImpar(int arr[], int n){
+    int temp[n], index=0;
+    for(int i=0;i<n;i++) if(arr[i]%2==0) temp[index++]=arr[i];
+    for(int i=0;i<n;i++) if(arr[i]%2!=0) temp[index++]=arr[i];
+    for(int i=0;i<n;i++) arr[i]=temp[i];
+}
+
+int main(){
+    int arr[]={3,2,1,4,5,6};
+    int n=6;
+    ordenarParImpar(arr,n);
+    for(int i=0;i<n;i++) cout<<arr[i]<<" ";
+    return 0;
+}
