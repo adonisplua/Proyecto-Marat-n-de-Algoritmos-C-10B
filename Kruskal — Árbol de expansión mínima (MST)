@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Edge{int u,v,w;};
+
+int find(int u, vector<int>& parent){
+    if(parent[u]!=u) parent[u]=find(parent[u],parent);
+    return parent[u];
+}
+
+void unite(int u, int v, vector<int>& parent, vector<int>& rank){
+    int pu=find(u,parent), pv=find(v,parent);
+    if(pu!=pv){
+        if(rank[pu]<rank[pv]) parent[pu]=pv;
+        else if(rank[pu]>rank[pv]) parent[pv]=pu;
+        else{ parent[pv]=pu; rank[pu]++; }
+    }
+}
+
+void kruskal(int V, vector<Edge>& edges){
+    sort(edges.begin(),edges.end(),[](Edge a, Edge b){return a.w<b.w;});
+    vector<int> parent(V), rank(V,0);
+    for(int i=0;i<V;i++) parent[i]=i;
+
+    int total=0;
+    cout<<"Aristas MST:\n";
+    for(auto &e:edges){
+        int pu=find(e.u,parent), pv=find(e.v,parent);
+        if(pu!=pv){
+            cout<<e.u<<" - "<<e.v<<" ("<<e.w<<")\n";
+            total+=e.w;
+            unite(pu,pv,parent,rank);
+        }
+    }
+    cout<<"Costo total: "<<total<<endl;
+}
+
+int main(){
+    int V=4;
+    vector<Edge> edges={{0,1,10},{0,2,6},{0,3,5},{1,3,15},{2,3,4}};
+    kruskal(V,edges);
+    return 0;
+}
