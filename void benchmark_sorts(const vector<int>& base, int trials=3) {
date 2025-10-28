@@ -1,0 +1,11 @@
+#include <chrono>
+void benchmark_sorts(const vector<int>& base, int trials=3) {
+    using clk = chrono::high_resolution_clock;
+    cout << "Benchmark (" << base.size() << " elementos) \n";
+    for (int t = 0; t < trials; ++t) {
+        // std::sort
+        auto a1 = base;
+        auto s1 = clk::now();
+        sort(a1.begin(), a1.end());
+        auto e1 = clk::now();
+        cout << " std::sort: " << chrono::duration<double>(e1-s1).count() << " s\n";
