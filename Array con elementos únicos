@@ -1,0 +1,16 @@
+Array con elementos únicos (sin repetidos)
+vector<int> elementosUnicos(int arr[], int n) {
+    vector<int> unicos;
+    for (int i = 0; i < n; i++) {
+        bool existe = false;
+        for (int u : unicos) {
+            if (u == arr[i]) {
+                existe = true;
+                break;
+            }
+        }
+        if (!existe)
+            unicos.push_back(arr[i]);
+    }
+    return unicos;
+}
