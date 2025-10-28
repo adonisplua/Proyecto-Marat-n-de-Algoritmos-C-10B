@@ -1,0 +1,42 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+struct TrieNode {
+    unordered_map<char, TrieNode*> children;
+    bool isEnd = false;
+};
+
+class Trie {
+public:
+    TrieNode* root;
+    Trie() { root = new TrieNode(); }
+
+    void insert(const string &word) {
+        TrieNode* node = root;
+        for(char c : word) {
+            if(!node->children[c]) node->children[c] = new TrieNode();
+            node = node->children[c];
+        }
+        node->isEnd = true;
+    }
+
+    bool search(const string &word) {
+        TrieNode* node = root;
+        for(char c : word) {
+            if(!node->children[c]) return false;
+            node = node->children[c];
+        }
+        return node->isEnd;
+    }
+};
+
+int main() {
+    Trie t;
+    t.insert("hola");
+    t.insert("mundo");
+
+    cout << "Buscar 'hola': " << (t.search("hola") ? "Sí" : "No") << endl;
+    cout << "Buscar 'adios': " << (t.search("adios") ? "Sí" : "No") << endl;
+    return 0;
+}
