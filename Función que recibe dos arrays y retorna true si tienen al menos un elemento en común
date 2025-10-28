@@ -1,0 +1,8 @@
+ Función que recibe dos arrays y retorna true si tienen al menos un elemento en común
+bool tienenElementoComun(const vector<int>& a, const vector<int>& b) {
+    for (int x : a)
+        for (int y : b)
+            if (x == y)
+                return true;
+    return false;
+}
