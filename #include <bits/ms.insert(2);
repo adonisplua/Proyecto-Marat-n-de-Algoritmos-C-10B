@@ -1,0 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    multiset<int> ms={1,2,2,3,3,3};
+    ms.insert(2);
+    for(int x:ms) cout<<x<<" ";
+    cout<<"\n";
+}
