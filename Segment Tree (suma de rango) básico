@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class SegmentTree {
+    vector<int> tree;
+    int n;
+public:
+    SegmentTree(vector<int>& v) {
+        n = v.size();
+        tree.resize(2*n);
+        for(int i=0;i<n;i++) tree[n+i]=v[i];
+        for(int i=n-1;i>0;i--) tree[i]=tree[2*i]+tree[2*i+1];
+    }
+    int sum(int l,int r) {
+        l+=n; r+=n;
+        int s=0;
+        while(l<=r){
+            if(l%2==1) s+=tree[l++];
+            if(r%2==0) s+=tree[r--];
+            l/=2; r/=2;
+        }
+        return s;
+    }
+};
+
+int main() {
+    vector<int> v = {1,2,3,4,5};
+    SegmentTree st(v);
+    cout << "Suma 1-3: " << st.sum(1,3) << endl; // 2+3+4=9
+    return 0;
+}
