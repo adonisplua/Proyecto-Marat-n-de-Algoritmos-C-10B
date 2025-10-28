@@ -1,0 +1,18 @@
+int partition_lomuto(vector<long long>& a, int l, int r) {
+    long long pivot = a[r];
+    int i = l;
+    for (int j = l; j < r; ++j) {
+        if (a[j] < pivot) {
+            swap(a[i++], a[j]);
+        }
+    }
+    swap(a[i], a[r]);
+    return i;
+}
+void quicksort_lomuto(vector<long long>& a, int l, int r) {
+    if (l < r) {
+        int p = partition_lomuto(a, l, r);
+        quicksort_lomuto(a, l, p-1);
+        quicksort_lomuto(a, p+1, r);
+    }
+}
