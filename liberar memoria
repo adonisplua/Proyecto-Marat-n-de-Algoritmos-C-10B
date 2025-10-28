@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* num = new int(50);
+    cout << "Valor: " << *num << endl;
+
+    delete num;  // liberar memoria
+    num = nullptr; // buena práctica
+    return 0;
+}
