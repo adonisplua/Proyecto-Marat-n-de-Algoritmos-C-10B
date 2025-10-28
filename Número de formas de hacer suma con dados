@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int diceSumWays(int n, int m){
+    vector<int> dp(n+1,0);
+    dp[0]=1;
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=m;j++)
+            if(i-j>=0) dp[i]+=dp[i-j];
+    return dp[n];
+}
+
+int main(){
+    int n=4, m=6;
+    cout<<"Número de formas de obtener "<<n<<" con un dado de "<<m<<" caras: "<<diceSumWays(n,m)<<endl;
+    return 0;
+}
