@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int LIS(vector<int>& arr){
+    int n=arr.size(), res=0;
+    vector<int> dp(n,1);
+    for(int i=1;i<n;i++)
+        for(int j=0;j<i;j++)
+            if(arr[i]>arr[j]) dp[i]=max(dp[i], dp[j]+1);
+    for(int i=0;i<n;i++) res=max(res, dp[i]);
+    return res;
+}
+
+int main(){
+    vector<int> arr={10,22,9,33,21,50,41,60};
+    cout<<"LIS length: "<<LIS(arr)<<endl;
+    return 0;
+}
