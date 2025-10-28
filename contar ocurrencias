@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int contarOcurrencias(int arr[], int n, int x) {
+    if (n == 0) return 0;
+    return (arr[n - 1] == x ? 1 : 0) + contarOcurrencias(arr, n - 1, x);
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 2, 2};
+    int x = 2;
+    cout << "Ocurrencias de " << x << ": " << contarOcurrencias(arr, 5, x) << endl;
+    return 0;
+}
