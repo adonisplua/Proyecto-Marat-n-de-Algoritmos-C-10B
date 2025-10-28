@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class DisjointSet {
+    vector<int> parent, rank;
+public:
+    DisjointSet(int n) : parent(n), rank(n,0) {
+        for(int i=0;i<n;i++) parent[i] = i;
+    }
+
+    int find(int x) {
+        if(parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+
+    void unite(int x, int y) {
+        int px = find(x), py = find(y);
+        if(px == py) return;
+        if(rank[px] < rank[py]) parent[px] = py;
+        else if(rank[px] > rank[py]) parent[py] = px;
+        else { parent[py] = px; rank[px]++; }
+    }
+};
+
+int main() {
+    DisjointSet ds(5);
+    ds.unite(0,1);
+    ds.unite(1,2);
+    cout << "0 y 2 conectados? " << (ds.find(0)==ds.find(2) ? "Sí" : "No") << endl;
+    cout << "3 y 4 conectados? " << (ds.find(3)==ds.find(4) ? "Sí" : "No") << endl;
+    return 0;
+}
