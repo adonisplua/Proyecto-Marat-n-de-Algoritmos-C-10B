@@ -1,0 +1,18 @@
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct Persona {
+    string nombre;
+    int edad;
+};
+
+int main() {
+    auto p = make_shared<Persona>();
+    p->nombre = "Sofia";
+    p->edad = 25;
+
+    cout << p->nombre << " (" << p->edad << " años)" << endl;
+    // No se necesita delete: se libera automáticamente
+    return 0;
+}
