@@ -1,0 +1,5 @@
+ Función que recibe un array y retorna el segundo valor más grande
+int segundoMayor(vector<int> arr) {
+    sort(arr.begin(), arr.end(), greater<int>());
+    return arr[1];
+}
