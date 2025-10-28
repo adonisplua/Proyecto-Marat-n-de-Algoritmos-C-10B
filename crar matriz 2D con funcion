@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int** crearMatriz(int filas, int cols) {
+    int** mat = new int*[filas];
+    for (int i = 0; i < filas; i++)
+        mat[i] = new int[cols];
+    return mat;
+}
+
+void liberarMatriz(int** mat, int filas) {
+    for (int i = 0; i < filas; i++)
+        delete[] mat[i];
+    delete[] mat;
+}
+
+int main() {
+    int f = 3, c = 3;
+    int** matriz = crearMatriz(f, c);
+
+    int valor = 1;
+    for (int i = 0; i < f; i++)
+        for (int j = 0; j < c; j++)
+            matriz[i][j] = valor++;
+
+    for (int i = 0; i < f; i++) {
+        for (int j = 0; j < c; j++)
+            cout << matriz[i][j] << " ";
+        cout << endl;
+    }
+
+    liberarMatriz(matriz, f);
+    return 0;
+}
