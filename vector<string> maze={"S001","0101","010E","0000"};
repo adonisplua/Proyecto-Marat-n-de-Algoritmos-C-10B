@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n=4,m=4;
+vector<string> maze={"S001","0101","010E","0000"};
+vector<vector<bool>> vis(n,vector<bool>(m,false));
+bool dfs(int x,int y){
+    if(x<0||y<0||x>=n||y>=m||maze[x][y]=='1'||vis[x][y]) return false;
+    if(maze[x][y]=='E') return true;
+    vis[x][y]=true;
+    if(dfs(x+1,y)||dfs(x-1,y)||dfs(x,y+1)||dfs(x,y-1)) return true;
+    vis[x][y]=false;
+    return false;
+}
+int main(){
+    cout<<(dfs(0,0)?"Hay camino":"No hay camino")<<"\n";
+}
