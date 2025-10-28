@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+void liberarLista(Nodo*& cabeza) {
+    Nodo* temp;
+    while (cabeza) {
+        temp = cabeza;
+        cabeza = cabeza->siguiente;
+        delete temp;
+    }
+}
+
+int main() {
+    Nodo* lista = new Nodo{1, new Nodo{2, new Nodo{3, nullptr}}};
+    liberarLista(lista);
+    cout << "Lista liberada correctamente." << endl;
+    return 0;
+}
