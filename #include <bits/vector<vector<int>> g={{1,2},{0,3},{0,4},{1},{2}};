@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<vector<int>> g={{1,2},{0,3},{0,4},{1},{2}};
+    vector<bool> vis(5,false);
+    stack<int> s; s.push(0);
+    while(!s.empty()){
+        int u=s.top(); s.pop();
+        if(!vis[u]){ cout<<u<<" "; vis[u]=true; for(int v:g[u]) s.push(v); }
+    }
+    cout<<"\n";
+}
