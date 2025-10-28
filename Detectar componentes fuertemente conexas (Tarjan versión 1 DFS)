@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <algorithm>
+using namespace std;
+
+int timerT=0;
+void tarjanDFS(int v, vector<vector<int>>& adj, vector<int>& disc, vector<int>& low,
+               stack<int>& st, vector<bool>& inStack){
+    disc[v]=low[v]=++timerT;
+    st.push(v);
+    inStack[v]=true;
+
+    for(int u: adj[v]){
+        if(disc[u]==-1){
+            tarjanDFS(u,adj,disc,low,st,inStack);
+            low[v]=min(low[v],low[u]);
+        } else if(inStack[u])
+            low[v]=min(low[v],disc[u]);
+    }
+
+    if(low[v]==disc[v]){
+        cout<<"SCC: ";
+        while(true){
+            int u=st.top(); st.pop(); inStack[u]=false;
+            cout<<u<<" ";
+            if(u==v) break;
+        }
+        cout<<endl;
+    }
+}
+
+void tarjanSCC(vector<vector<int>>& adj){
+    int n=adj.size();
+    vector<int> disc(n,-1), low(n,-1);
+    vector<bool> inStack(n,false);
+    stack<int> st;
+    for(int i=0;i<n;i++)
+        if(disc[i]==-1) tarjanDFS(i,adj,disc,low,st,inStack);
+}
+
+int main(){
+    vector<vector<int>> adj={{1},{2,3},{0},{4},{}};
+    tarjanSCC(adj);
+    return 0;
+}
