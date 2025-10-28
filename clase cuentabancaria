@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+class CuentaBancaria {
+private:
+    string titular;
+    double saldo;
+public:
+    CuentaBancaria(string t, double s) : titular(t), saldo(s) {}
+
+    void depositar(double cantidad) { saldo += cantidad; }
+    void retirar(double cantidad) { if (cantidad <= saldo) saldo -= cantidad; }
+    void mostrar() { cout << titular << " - Saldo: " << saldo << endl; }
+};
+
+int main() {
+    CuentaBancaria c("Ana", 1000);
+    c.depositar(500);
+    c.retirar(200);
+    c.mostrar();
+    return 0;
+}
