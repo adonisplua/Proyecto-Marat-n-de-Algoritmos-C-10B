@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int countPathsSum(vector<vector<pair<int,int>>>& adj, int u, int dest, int target, vector<vector<int>>& dp){
+    if(target==0 && u==dest) return 1;
+    if(target<0) return 0;
+    if(dp[u][target]!=-1) return dp[u][target];
+    int count=0;
+    for(auto [v,w]: adj[u])
+        count+=countPathsSum(adj,v,dest,target-w,dp);
+    return dp[u][target]=count;
+}
+
+int main(){
+    vector<vector<pair<int,int>>> adj={
+        {{1,2},{2,3}},
+        {{3,4}},
+        {{3,2}},
+        {}};
+    int target=6;
+    vector<vector<int>> dp(4, vector<int>(target+1,-1));
+    cout<<"Caminos 0→3 con suma 6: "<<countPathsSum(adj,0,3,target,dp)<<endl;
+    return 0;
+}
