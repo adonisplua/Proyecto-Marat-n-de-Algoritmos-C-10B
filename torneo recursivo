@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int torneoMax(int arr[], int izquierda, int derecha) {
+    if (izquierda == derecha) return arr[izquierda];
+    int medio = (izquierda + derecha) / 2;
+    int maxIzq = torneoMax(arr, izquierda, medio);
+    int maxDer = torneoMax(arr, medio + 1, derecha);
+    return max(maxIzq, maxDer);
+}
+
+int main() {
+    int arr[] = {5, 8, 2, 9, 4};
+    cout << "Máximo en arreglo: " << torneoMax(arr, 0, 4) << endl;
+    return 0;
+}
