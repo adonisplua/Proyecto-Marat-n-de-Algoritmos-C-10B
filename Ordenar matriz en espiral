@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void sortSpiral(int mat[][3], int n){
+    vector<int> v;
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++) v.push_back(mat[i][j]);
+    sort(v.begin(),v.end());
+    int top=0, bottom=n-1, left=0, right=n-1, idx=0;
+    while(top<=bottom && left<=right){
+        for(int i=left;i<=right;i++) mat[top][i]=v[idx++];
+        top++;
+        for(int i=top;i<=bottom;i++) mat[i][right]=v[idx++];
+        right--;
+        for(int i=right;i>=left;i--) mat[bottom][i]=v[idx++];
+        bottom--;
+        for(int i=bottom;i>=top;i--) mat[i][left]=v[idx++];
+        left++;
+    }
+}
+
+int main(){
+    int mat[3][3]={{9,7,5},{6,3,1},{8,2,4}};
+    sortSpiral(mat,3);
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++) cout<<mat[i][j]<<" ";
+        cout<<endl;
+    }
+    return 0;
+}
