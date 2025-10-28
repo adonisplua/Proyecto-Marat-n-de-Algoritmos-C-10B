@@ -1,0 +1,38 @@
+Función que recibe un array y un valor, y retorna un nuevo array sin ese valor
+vector<int> eliminarValor(const vector<int>& arr, int val) {
+    vector<int> res;
+    for (int x : arr)
+        if (x != val)
+            res.push_back(x);
+    return res;
+}
+
+// Ejemplo uso:
+int main() {
+    vector<int> v = {3, 5, 5, -2, 10, 3, 7, 5};
+    vector<int> w = {5, 3, 7, 10};
+
+    cout << "Suma arrays: ";
+    vector<int> s = sumaArrays(v, w);
+    for (int x : s) cout << x << " ";
+    cout << "\n";
+
+    cout << "Cantidad negativos: " << contarNegativos(v) << "\n";
+    cout << "Todos positivos? " << (todosPositivos(v) ? "Sí" : "No") << "\n";
+
+    reemplazar(v, 5, 0);
+    cout << "Array tras reemplazo: ";
+    for (int x : v) cout << x << " ";
+    cout << "\n";
+
+    cout << "Consecutivos 0: " << contarConsecutivos(v, 0) << "\n";
+    cout << "Son permutacion? " << (sonPermutacion(v, w) ? "Sí" : "No") << "\n";
+
+    return 0;
+}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <string>
+using namespace std;
