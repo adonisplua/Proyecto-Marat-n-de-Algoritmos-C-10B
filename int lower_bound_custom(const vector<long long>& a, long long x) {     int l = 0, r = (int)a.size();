@@ -1,0 +1,9 @@
+int lower_bound_custom(const vector<long long>& a, long long x) {
+    int l = 0, r = (int)a.size();
+    while (l < r) {
+        int m = l + (r - l) / 2;
+        if (a[m] < x) l = m + 1;
+        else r = m;
+    }
+    return l; // puede ser a.size() si no existe >= x
+}
