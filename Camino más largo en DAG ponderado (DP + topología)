@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <climits>
+using namespace std;
+
+void topoDFS2(int v, vector<vector<pair<int,int>>>& adj, vector<bool>& vis, stack<int>& st){
+    vis[v]=true;
+    for(auto [u,w]:adj[v])
+        if(!vis[u]) topoDFS2(u,adj,vis,st);
+    st.push(v);
+}
+
+void longestWeightedPath(vector<vector<pair<int,int>>>& adj, int s){
+    int n=adj.size();
+    vector<bool> vis(n,false);
+    stack<int> st;
+    for(int i=0;i<n;i++) if(!vis[i]) topoDFS2(i,adj,vis,st);
+
+    vector<int> dist(n,INT_MIN);
+    dist[s]=0;
+    while(!st.empty()){
+        int u=st.top(); st.pop();
+        if(dist[u]!=INT_MIN)
+            for(auto [v,w]:adj[u])
+                dist[v]=max(dist[v],dist[u]+w);
+    }
+
+    cout<<"Camino más largo ponderado desde "<<s<<": ";
+    for(int i=0;i<n;i++) cout<<(dist[i]==INT_MIN?-999:dist[i])<<" ";
+    cout<<endl;
+}
+
+int main(){
+    vector<vector<pair<int,int>>> adj={
+        {{1,2},{2,4}},{{3,7}},{{3,1}},{{4,3}},{}};
+    longestWeightedPath(adj,0);
+    return 0;
+}
