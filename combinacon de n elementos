@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int combinacion(int n, int k) {
+    if (k == 0 || k == n) return 1;
+    return combinacion(n - 1, k - 1) + combinacion(n - 1, k);
+}
+
+int main() {
+    cout << "C(5,2) = " << combinacion(5, 2) << endl;
+    return 0;
+}
