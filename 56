@@ -1,0 +1,9 @@
+Función que recibe un array y devuelve true si hay números repetidos
+bool hayRepetidos(const vector<int>& arr) {
+    vector<int> copia = arr;
+    sort(copia.begin(), copia.end());
+    for (size_t i = 1; i < copia.size(); i++)
+        if (copia[i] == copia[i-1])
+            return true;
+    return false;
+}
