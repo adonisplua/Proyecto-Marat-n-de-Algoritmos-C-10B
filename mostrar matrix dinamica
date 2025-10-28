@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+void mostrarMatriz(int** mat, int f, int c) {
+    for (int i = 0; i < f; i++) {
+        for (int j = 0; j < c; j++)
+            cout << mat[i][j] << " ";
+        cout << endl;
+    }
+}
+
+int main() {
+    int f = 2, c = 3;
+    int** mat = new int*[f];
+    for (int i = 0; i < f; i++)
+        mat[i] = new int[c];
+
+    int cont = 1;
+    for (int i = 0; i < f; i++)
+        for (int j = 0; j < c; j++)
+            mat[i][j] = cont++;
+
+    mostrarMatriz(mat, f, c);
+
+    for (int i = 0; i < f; i++)
+        delete[] mat[i];
+    delete[] mat;
+    return 0;
+}
