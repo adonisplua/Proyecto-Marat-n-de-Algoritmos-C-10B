@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+long long paintFence(int n, int k){
+    if(n==1) return k;
+    long long same=k, diff=k*(k-1), total=same+diff;
+    for(int i=3;i<=n;i++){
+        same=diff;
+        diff=total*(k-1);
+        total=same+diff;
+    }
+    return total;
+}
+
+int main(){
+    cout<<"Formas de pintar 3 vallas con 2 colores: "<<paintFence(3,2)<<endl;
+    return 0;
+}
