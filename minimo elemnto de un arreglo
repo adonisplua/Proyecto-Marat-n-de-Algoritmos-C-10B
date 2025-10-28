@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int minArreglo(int arr[], int n) {
+    if (n == 1) return arr[0];
+    return min(arr[n - 1], minArreglo(arr, n - 1));
+}
+
+int main() {
+    int arr[] = {3, 7, 2, 9, 5};
+    cout << "Mínimo: " << minArreglo(arr, 5) << endl;
+    return 0;
+}
