@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Animal {
+public:
+    virtual void hacerSonido() { cout << "Sonido genérico" << endl; }
+    virtual ~Animal() {}
+};
+
+class Perro : public Animal {
+public:
+    void hacerSonido() override { cout << "Guau!" << endl; }
+};
+
+class Gato : public Animal {
+public:
+    void hacerSonido() override { cout << "Miau!" << endl; }
+};
+
+int main() {
+    vector<Animal*> animales;
+    animales.push_back(new Perro());
+    animales.push_back(new Gato());
+
+    for (auto a : animales)
+        a->hacerSonido();
+
+    for (auto a : animales)
+        delete a;
+
+    return 0;
+}
