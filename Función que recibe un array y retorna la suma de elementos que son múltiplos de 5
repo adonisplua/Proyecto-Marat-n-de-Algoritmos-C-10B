@@ -1,0 +1,8 @@
+ Función que recibe un array y retorna la suma de elementos que son múltiplos de 5
+int sumaMultiplos5(const vector<int>& arr) {
+    int suma = 0;
+    for (int x : arr)
+        if (x % 5 == 0)
+            suma += x;
+    return suma;
+}
