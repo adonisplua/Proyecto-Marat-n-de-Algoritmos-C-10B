@@ -1,0 +1,5 @@
+ Función que recibe un array y un número n y retorna un nuevo array con los primeros n elementos
+vector<int> primerosN(const vector<int>& arr, int n) {
+    if (n > (int)arr.size()) n = arr.size();
+    return vector<int>(arr.begin(), arr.begin() + n);
+}
