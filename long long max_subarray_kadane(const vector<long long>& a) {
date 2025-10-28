@@ -1,0 +1,8 @@
+long long max_subarray_kadane(const vector<long long>& a) {
+    long long best = LLONG_MIN, cur = 0;
+    for (auto x : a) {
+        cur = max(x, cur + x);
+        best = max(best, cur);
+    }
+    return best;
+}
