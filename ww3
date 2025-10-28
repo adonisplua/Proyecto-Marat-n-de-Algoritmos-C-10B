@@ -1,0 +1,9 @@
+ Función que recibe un array y retorna la suma de elementos entre dos índices dados (inclusive)
+int sumaEntreIndices(const vector<int>& arr, int inicio, int fin) {
+    if (inicio < 0) inicio = 0;
+    if (fin >= (int)arr.size()) fin = arr.size() -1;
+    int suma = 0;
+    for (int i = inicio; i <= fin; i++)
+        suma += arr[i];
+    return suma;
+}
