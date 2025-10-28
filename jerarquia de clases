@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Figura {
+public:
+    virtual double area() = 0; // Método abstracto
+    virtual void mostrar() = 0;
+    virtual ~Figura() {}
+};
+
+class Rectangulo : public Figura {
+private:
+    double base, altura;
+public:
+    Rectangulo(double b, double a) : base(b), altura(a) {}
+    double area() override { return base * altura; }
+    void mostrar() override {
+        cout << "Rectángulo - Área: " << area() << endl;
+    }
+};
+
+class Triangulo : public Figura {
+private:
+    double base, altura;
+public:
+    Triangulo(double b, double a) : base(b), altura(a) {}
+    double area() override { return (base * altura) / 2; }
+    void mostrar() override {
+        cout << "Triángulo - Área: " << area() << endl;
+    }
+};
+
+class Circulo : public Figura {
+private:
+    double radio;
+public:
+    Circulo(double r) : radio(r) {}
+    double area() override { return M_PI * radio * radio; }
+    void mostrar() override {
+        cout << "Círculo - Área: " << area() << endl;
+    }
+};
+
+int main() {
+    Figura* figuras[3];
+    figuras[0] = new Rectangulo(4, 5);
+    figuras[1] = new Triangulo(4, 5);
+    figuras[2] = new Circulo(3);
+
+    for (int i = 0; i < 3; i++) {
+        figuras[i]->mostrar();
+        delete figuras[i];
+    }
+
+    return 0;
+}
