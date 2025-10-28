@@ -1,0 +1,29 @@
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool cmp(pair<int,int> a, pair<int,int> b){
+    if(a.second!=b.second) return a.second>b.second;
+    return a.first<b.first;
+}
+
+void ordenarPorFrecuencia(int arr[], int n){
+    map<int,int> freq;
+    for(int i=0;i<n;i++) freq[arr[i]]++;
+    vector<pair<int,int>> v(freq.begin(), freq.end());
+    sort(v.begin(), v.end(), cmp);
+    int idx=0;
+    for(auto p:v){
+        for(int i=0;i<p.second;i++) arr[idx++]=p.first;
+    }
+}
+
+int main(){
+    int arr[]={4,5,6,5,4,3};
+    int n=6;
+    ordenarPorFrecuencia(arr,n);
+    for(int i=0;i<n;i++) cout<<arr[i]<<" ";
+    return 0;
+}
