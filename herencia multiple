@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Persona {
+protected:
+    string nombre;
+public:
+    Persona(string n) : nombre(n) {}
+};
+
+class Profesor {
+protected:
+    string materia;
+public:
+    Profesor(string m) : materia(m) {}
+};
+
+class Investigador {
+protected:
+    string proyecto;
+public:
+    Investigador(string p) : proyecto(p) {}
+};
+
+class ProfesorInvestigador : public Persona, public Profesor, public Investigador {
+public:
+    ProfesorInvestigador(string n, string m, string p)
+        : Persona(n), Profesor(m), Investigador(p) {}
+
+    void mostrar() {
+        cout << "Profesor Investigador: " << nombre 
+             << " - Materia: " << materia 
+             << ", Proyecto: " << proyecto << endl;
+    }
+};
+
+int main() {
+    ProfesorInvestigador pi("Carlos", "Matemáticas", "IA Aplicada");
+    pi.mostrar();
+    return 0;
+}
