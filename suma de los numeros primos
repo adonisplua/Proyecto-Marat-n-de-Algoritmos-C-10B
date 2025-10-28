@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int sumaN(int n) {
+    if (n == 0) return 0;
+    return n + sumaN(n - 1);
+}
+
+int main() {
+    int num = 10;
+    cout << "Suma de 1 a " << num << " = " << sumaN(num) << endl;
+    return 0;
+}
