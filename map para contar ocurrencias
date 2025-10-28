@@ -1,0 +1,14 @@
+#include <iostream>
+#include <map>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v = {1,2,2,3,3,3};
+    map<int,int> freq;
+    for(int x:v) freq[x]++;
+
+    for(auto [key,val]: freq)
+        cout << key << " aparece " << val << " veces\n";
+    return 0;
+}
