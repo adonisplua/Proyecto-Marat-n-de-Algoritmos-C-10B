@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void topoSort(int v, vector<vector<int>>& adj, vector<bool>& vis, vector<int>& order){
+    vis[v]=true;
+    for(int u:adj[v])
+        if(!vis[u]) topoSort(u,adj,vis,order);
+    order.push_back(v);
+}
+
+int countPathsDAG(int n, vector<vector<int>>& adj, int start, int end){
+    vector<bool> vis(n,false);
+    vector<int> order;
+    for(int i=0;i<n;i++)
+        if(!vis[i]) topoSort(i,adj,vis,order);
+    vector<int> dp(n,0);
+    dp[start]=1;
+    for(int i=order.size()-1;i>=0;i--){
+        int node=order[i];
+        for(int u:adj[node]) dp[u]+=dp[node];
+    }
+    return dp[end];
+}
+
+int main(){
+    int n=6;
+    vector<vector<int>> adj={{1,2},{3},{3,4},{5},{5},{}};
+    cout<<"Número de caminos de 0 a 5: "<<countPathsDAG(n,adj,0,5)<<endl;
+    return 0;
+}
