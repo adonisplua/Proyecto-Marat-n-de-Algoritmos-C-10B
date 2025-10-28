@@ -1,0 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    vector<string> words = {"apple","banana","apple"};
+    unordered_map<string,int> freq;
+    for(auto &w: words) freq[w]++;
+    for(auto &p: freq) cout << p.first << " -> " << p.second << "\n";
+}
