@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int potencia(int base, int exp) {
+    if (exp == 0) return 1;
+    return base * potencia(base, exp - 1);
+}
+
+int main() {
+    cout << "2^5 = " << potencia(2, 5) << endl;
+    return 0;
+}
