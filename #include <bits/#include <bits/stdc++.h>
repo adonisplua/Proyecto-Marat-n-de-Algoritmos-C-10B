@@ -1,0 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    deque<int> dq={1,2,3};
+    dq.push_front(0); dq.push_back(4);
+    cout<<"Front:"<<dq.front()<<" Back:"<<dq.back()<<"\n";
+    dq.pop_front(); dq.pop_back();
+    for(int x:dq) cout<<x<<" ";
+    cout<<"\n";
+}
