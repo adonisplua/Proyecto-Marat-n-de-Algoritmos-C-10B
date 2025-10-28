@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int* miRealloc(int* arr, int oldSize, int newSize) {
+    int* nuevo = new int[newSize];
+    for (int i = 0; i < oldSize && i < newSize; i++)
+        nuevo[i] = arr[i];
+    delete[] arr;
+    return nuevo;
+}
+
+int main() {
+    int* arr = new int[3]{1, 2, 3};
+    arr = miRealloc(arr, 3, 6);
+
+    for (int i = 3; i < 6; i++)
+        arr[i] = i + 1;
+
+    for (int i = 0; i < 6; i++)
+        cout << arr[i] << " ";
+
+    delete[] arr;
+    return 0;
+}
