@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+class Fecha {
+public:
+    int dia, mes, anio;
+    Fecha(int d, int m, int a) : dia(d), mes(m), anio(a) {}
+};
+
+class Persona {
+private:
+    string nombre;
+    Fecha nacimiento;
+public:
+    Persona(string n, Fecha f) : nombre(n), nacimiento(f) {}
+
+    void mostrar() {
+        cout << nombre << " nació el " << nacimiento.dia << "/" 
+             << nacimiento.mes << "/" << nacimiento.anio << endl;
+    }
+};
+
+int main() {
+    Fecha f(15, 7, 2000);
+    Persona p("Sofia", f);
+    p.mostrar();
+    return 0;
+}
