@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Item { int a,b; string name; };
+int main() {
+    vector<Item> v = {{1,5,"x"}, {2,3,"y"}, {1,2,"z"}};
+    sort(v.begin(), v.end(), [](const Item &A, const Item &B) {
+        if(A.a != B.a) return A.a < B.a;
+        return A.b < B.b;
+    });
+    for(auto &i : v) cout << i.name << " ";
+    cout << "\n";
+}
