@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+void dfs1(int v, vector<vector<int>>& adj, vector<bool>& vis, stack<int>& st){
+    vis[v]=true;
+    for(int u: adj[v])
+        if(!vis[u]) dfs1(u,adj,vis,st);
+    st.push(v);
+}
+
+void dfs2(int v, vector<vector<int>>& adjT, vector<bool>& vis){
+    vis[v]=true;
+    cout<<v<<" ";
+    for(int u: adjT[v])
+        if(!vis[u]) dfs2(u,adjT,vis);
+}
+
+void kosaraju(vector<vector<int>>& adj){
+    int n=adj.size();
+    vector<bool> vis(n,false);
+    stack<int> st;
+    for(int i=0;i<n;i++)
+        if(!vis[i]) dfs1(i,adj,vis,st);
+    vector<vector<int>> adjT(n);
+    for(int i=0;i<n;i++)
+        for(int v: adj[i]) adjT[v].push_back(i);
+    fill(vis.begin(), vis.end(), false);
+    cout<<"Componentes fuertemente conexas:\n";
+    while(!st.empty()){
+        int v=st.top(); st.pop();
+        if(!vis[v]){
+            dfs2(v,adjT,vis);
+            cout<<endl;
+        }
+    }
+}
+
+int main(){
+    vector<vector<int>> adj={{1},{2,3},{0},{4},{}};
+    kosaraju(adj);
+    return 0;
+}
