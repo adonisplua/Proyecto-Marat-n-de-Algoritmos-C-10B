@@ -1,0 +1,12 @@
+pair<int,int> equal_range_indices(const vector<long long>& a, long long x) {
+    int lo = lower_bound_custom(a,x);
+    if (lo == (int)a.size() || a[lo] != x) return {-1,-1};
+    // upper bound
+    int l = lo, r = (int)a.size();
+    while (l < r) {
+        int m = l + (r - l) / 2;
+        if (a[m] <= x) l = m + 1;
+        else r = m;
+    }
+    return {lo, l-1};
+}
