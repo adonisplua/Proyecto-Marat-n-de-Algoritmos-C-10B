@@ -1,0 +1,13 @@
+vector<long long> sort_almost_sorted(const vector<long long>& a, int k) {
+    vector<long long> res;
+    priority_queue<long long, vector<long long>, greater<long long>> pq;
+    int n = (int)a.size();
+    for (int i = 0; i < n; ++i) {
+        pq.push(a[i]);
+        if ((int)pq.size() > k+1) {
+            res.push_back(pq.top()); pq.pop();
+        }
+    }
+    while (!pq.empty()) { res.push_back(pq.top()); pq.pop(); }
+    return res;
+}
