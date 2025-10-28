@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+class Empresa {
+public:
+    class Empleado {
+    private:
+        string nombre;
+    public:
+        Empleado(string n) : nombre(n) {}
+        void mostrar() { cout << "Empleado: " << nombre << endl; }
+    };
+};
+
+int main() {
+    Empresa::Empleado e("Carlos");
+    e.mostrar();
+    return 0;
+}
