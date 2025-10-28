@@ -1,0 +1,15 @@
+Función que recibe un array y retorna el índice del segundo valor mínimo
+int indiceSegundoMinimo(const vector<int>& arr) {
+    int min1 = INT_MAX, min2 = INT_MAX, idxMin2 = -1;
+    for (size_t i = 0; i < arr.size(); i++) {
+        int x = arr[i];
+        if (x < min1) {
+            min2 = min1;
+            min1 = x;
+        } else if (x < min2 && x != min1) {
+            min2 = x;
+            idxMin2 = i;
+        }
+    }
+    return idxMin2;
+}
