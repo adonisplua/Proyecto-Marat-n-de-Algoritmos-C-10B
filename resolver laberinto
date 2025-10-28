@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std>
+
+bool resolverLaberinto(int lab[][4], int x, int y, int sol[][4], int N, int M) {
+    if (x == N - 1 && y == M - 1) {
+        sol[x][y] = 1;
+        return true;
+    }
+    if (x >= 0 && x < N && y >= 0 && y < M && lab[x][y] == 1) {
+        sol[x][y] = 1;
+        if (resolverLaberinto(lab, x + 1, y, sol, N, M)) return true;
+        if (resolverLaberinto(lab, x, y + 1, sol, N, M)) return true;
+        sol[x][y] = 0;
+        return false;
+    }
+    return false;
+}
+
+int main() {
+    int lab[4][4] = {
+        {1, 0, 0, 0},
+        {1, 1, 0, 1},
+        {0, 1, 0, 0},
+        {1, 1, 1, 1}
+    };
+    int sol[4][4] = {0};
+
+    if (resolverLaberinto(lab, 0, 0, sol, 4, 4)) {
+        cout << "Ruta encontrada:" << endl;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++)
+                cout << sol[i][j] << " ";
+            cout << endl;
+        }
+    } else cout << "No hay solución" << endl;
+
+    return 0;
+}
