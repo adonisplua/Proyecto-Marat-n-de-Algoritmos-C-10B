@@ -1,0 +1,5 @@
+Función que recibe un array y un valor, e inserta el valor al final si no existe
+void insertarSiNoExiste(vector<int>& arr, int val) {
+    if (find(arr.begin(), arr.end(), val) == arr.end())
+        arr.push_back(val);
+}
