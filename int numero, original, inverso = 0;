@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero, original, inverso = 0;
+    cout << "Ingrese un número: ";
+    cin >> numero;
+    original = numero;
+
+    while (numero != 0) {
+        inverso = inverso * 10 + numero % 10;
+        numero /= 10;
+    }
+
+    if (original == inverso)
+        cout << "El número es palíndromo." << endl;
+    else
+        cout << "El número no es palíndromo." << endl;
+
+    return 0;
+}
