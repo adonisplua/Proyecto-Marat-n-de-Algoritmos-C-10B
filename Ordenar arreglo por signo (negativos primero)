@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+void ordenarPorSigno(int arr[], int n){
+    int j=0;
+    for(int i=0;i<n;i++){
+        if(arr[i]<0) swap(arr[i],arr[j++]);
+    }
+}
+
+int main(){
+    int arr[]={-1,2,-3,4,0,-2};
+    int n=6;
+    ordenarPorSigno(arr,n);
+    for(int i=0;i<n;i++) cout<<arr[i]<<" ";
+    return 0;
+}
