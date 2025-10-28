@@ -1,0 +1,9 @@
+ Función que recibe un array y retorna la diferencia entre la suma de números pares e impares
+int diferenciaSumaParImpar(const vector<int>& arr) {
+    int sumaPar = 0, sumaImpar = 0;
+    for (int x : arr) {
+        if (x % 2 == 0) sumaPar += x;
+        else sumaImpar += x;
+    }
+    return sumaPar - sumaImpar;
+}
