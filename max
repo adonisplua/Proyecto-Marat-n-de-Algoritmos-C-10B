@@ -1,0 +1,6 @@
+Función que recibe un array y retorna la diferencia entre el máximo y mínimo
+int rangoArray(const vector<int>& arr) {
+    int maxVal = *max_element(arr.begin(), arr.end());
+    int minVal = *min_element(arr.begin(), arr.end());
+    return maxVal - minVal;
+}
