@@ -1,0 +1,8 @@
+ Función que cuenta cuántos números negativos hay en un array
+int contarNegativos(const vector<int>& arr) {
+    int cont = 0;
+    for (int num : arr)
+        if (num < 0)
+            cont++;
+    return cont;
+}
