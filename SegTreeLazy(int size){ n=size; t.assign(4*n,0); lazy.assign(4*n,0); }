@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct SegTreeLazy{
+    int n; vector<int> t,lazy;
+    SegTreeLazy(int size){ n=size; t.assign(4*n,0); lazy.assign(4*n,0); }
+    void push(int v,int l,int r){
+        if(lazy[v]==0) return;
+        t[v]+=(r-l+1)*lazy[v];
+        if(l!=r){ lazy[v*2]+=lazy[v]; lazy[v*2+1]+=lazy[v]; }
+        lazy[v]=0;
+    }
