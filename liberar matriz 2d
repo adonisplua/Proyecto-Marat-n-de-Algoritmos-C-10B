@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void liberar(int** mat, int filas) {
+    for (int i = 0; i < filas; i++)
+        delete[] mat[i];
+    delete[] mat;
+}
+
+int main() {
+    int f = 2, c = 2;
+    int** mat = new int*[f];
+    for (int i = 0; i < f; i++)
+        mat[i] = new int[c]{i, i+1};
+
+    liberar(mat, f);
+    cout << "Matriz liberada." << endl;
+    return 0;
+}
