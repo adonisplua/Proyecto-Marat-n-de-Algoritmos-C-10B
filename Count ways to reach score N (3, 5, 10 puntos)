@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int countScoreWays(int n){
+    vector<int> dp(n+1,0);
+    dp[0]=1;
+    int moves[]={3,5,10};
+    for(int i=0;i<3;i++)
+        for(int j=moves[i];j<=n;j++)
+            dp[j]+=dp[j-moves[i]];
+    return dp[n];
+}
+
+int main(){
+    cout<<"Formas de lograr puntaje 20: "<<countScoreWays(20)<<endl;
+    return 0;
+}
