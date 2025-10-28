@@ -1,0 +1,10 @@
+ Función que verifica si un array contiene al menos un número par y uno impar
+bool contieneParEImpar(const vector<int>& arr) {
+    bool par = false, impar = false;
+    for (int x : arr) {
+        if (x % 2 == 0) par = true;
+        else impar = true;
+        if (par && impar) return true;
+    }
+    return false;
+}
