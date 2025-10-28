@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void subconjuntos(vector<int>& conjunto, vector<int>& temp, int index) {
+    if (index == conjunto.size()) {
+        cout << "{ ";
+        for (int x : temp) cout << x << " ";
+        cout << "}" << endl;
+        return;
+    }
+    // Incluir elemento
+    temp.push_back(conjunto[index]);
+    subconjuntos(conjunto, temp, index + 1);
+    // No incluir elemento
+    temp.pop_back();
+    subconjuntos(conjunto, temp, index + 1);
+}
+
+int main() {
+    vector<int> conjunto = {1, 2, 3};
+    vector<int> temp;
+    subconjuntos(conjunto, temp, 0);
+    return 0;
+}
