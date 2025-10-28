@@ -1,0 +1,9 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    map<int,string> m={{1,"a"},{3,"b"},{5,"c"}};
+    auto it=m.lower_bound(2);
+    if(it!=m.end()) cout<<it->first<<":"<<it->second<<"\n";
+    it=m.upper_bound(3);
+    if(it!=m.end()) cout<<it->first<<":"<<it->second<<"\n";
+}
