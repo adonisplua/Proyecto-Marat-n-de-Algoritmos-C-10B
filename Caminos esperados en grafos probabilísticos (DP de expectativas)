@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+double expectedSteps(vector<vector<pair<int,double>>>& adj, int s, int dest, vector<double>& memo, vector<int>& vis){
+    if(s==dest) return 0.0;
+    if(vis[s]) return memo[s];
+    vis[s]=1;
+    double exp=0, total=0;
+    for(auto [v,p]: adj[s]){
+        exp += p * (1 + expectedSteps(adj,v,dest,memo,vis));
+        total += p;
+    }
+    return memo[s] = exp/total;
+}
+
+int main(){
+    vector<vector<pair<int,double>>> adj={
+        {{1,0.5},{2,0.5}},
+        {{2,1.0}},
+        {{3,1.0}},
+        {}};
+    vector<double> memo(4,-1);
+    vector<int> vis(4,0);
+    cout<<"Pasos esperados 0→3: "<<expectedSteps(adj,0,3,memo,vis)<<endl;
+    return 0;
+}
