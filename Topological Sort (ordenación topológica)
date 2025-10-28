@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+void topoUtil(int v, vector<vector<int>>& adj, vector<bool>& vis, stack<int>& st){
+    vis[v]=true;
+    for(int u: adj[v])
+        if(!vis[u]) topoUtil(u,adj,vis,st);
+    st.push(v);
+}
+
+void topoSort(vector<vector<int>>& adj){
+    vector<bool> vis(adj.size(),false);
+    stack<int> st;
+    for(int i=0;i<adj.size();i++)
+        if(!vis[i]) topoUtil(i,adj,vis,st);
+    cout<<"Orden topológico: ";
+    while(!st.empty()){
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    cout<<endl;
+}
+
+int main(){
+    vector<vector<int>> adj={{1,2},{3},{3},{4},{}};
+    topoSort(adj);
+    return 0;
+}
