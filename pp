@@ -1,0 +1,9 @@
+ Función que convierte un array de strings a un solo string separado por espacios
+string concatenarConEspacios(const vector<string>& arr) {
+    string res = "";
+    for (size_t i = 0; i < arr.size(); i++) {
+        res += arr[i];
+        if (i != arr.size() -1) res += " ";
+    }
+    return res;
+}
