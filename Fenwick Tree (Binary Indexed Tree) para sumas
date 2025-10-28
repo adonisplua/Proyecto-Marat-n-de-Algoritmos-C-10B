@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class FenwickTree {
+    vector<int> bit;
+    int n;
+public:
+    FenwickTree(int size) : n(size) { bit.assign(n+1,0); }
+    void update(int idx,int val) {
+        for(++idx; idx<=n; idx+=idx&-idx) bit[idx]+=val;
+    }
+    int query(int idx) {
+        int sum=0;
+        for(++idx; idx>0; idx-=idx&-idx) sum+=bit[idx];
+        return sum;
+    }
+};
+
+int main() {
+    FenwickTree ft(5);
+    ft.update(0,1);
+    ft.update(1,2);
+    ft.update(2,3);
+    cout << "Suma 0-2: " << ft.query(2) << endl; // 1+2+3=6
+    return 0;
+}
