@@ -1,0 +1,11 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char* nombre = new char[20];
+    strcpy(nombre, "ChatGPT");
+    cout << "Nombre: " << nombre << endl;
+    delete[] nombre;
+    return 0;
+}
