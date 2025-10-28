@@ -1,0 +1,8 @@
+Función que recibe un array y un valor, y cuenta cuántas veces aparece al menos dos veces consecutivas
+int contarConsecutivos(const vector<int>& arr, int val) {
+    int cont = 0;
+    for (size_t i = 0; i + 1 < arr.size(); i++)
+        if (arr[i] == val && arr[i+1] == val)
+            cont++;
+    return cont;
+}
