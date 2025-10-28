@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Contador {
+private:
+    int valor;
+public:
+    Contador(int v = 0) : valor(v) {}
+
+    Contador& aumentar() {
+        valor++;
+        return *this;
+    }
+
+    Contador& mostrar() {
+        cout << "Valor: " << valor << endl;
+        return *this;
+    }
+};
+
+int main() {
+    Contador c;
+    c.aumentar().aumentar().mostrar();
+    return 0;
+}
