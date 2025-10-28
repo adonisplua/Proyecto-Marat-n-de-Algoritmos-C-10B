@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+void imprimir1aN(int n) {
+    if (n == 0) return;
+    imprimir1aN(n - 1);
+    cout << n << " ";
+}
+
+int main() {
+    int n = 5;
+    imprimir1aN(n);
+    cout << endl;
+    return 0;
+}
