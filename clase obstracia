@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void hacerSonido() = 0; // Método abstracto
+};
+
+class Perro : public Animal {
+public:
+    void hacerSonido() override { cout << "Guau guau!" << endl; }
+};
+
+class Gato : public Animal {
+public:
+    void hacerSonido() override { cout << "Miau miau!" << endl; }
+};
+
+int main() {
+    Perro p;
+    Gato g;
+    p.hacerSonido();
+    g.hacerSonido();
+    return 0;
+}
