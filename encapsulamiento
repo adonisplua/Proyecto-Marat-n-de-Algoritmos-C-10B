@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+class Persona {
+private:
+    string nombre;
+public:
+    void setNombre(string n) { nombre = n; }
+    string getNombre() { return nombre; }
+};
+
+int main() {
+    Persona p;
+    p.setNombre("Lucia");
+    cout << "Nombre: " << p.getNombre() << endl;
+    return 0;
+}
