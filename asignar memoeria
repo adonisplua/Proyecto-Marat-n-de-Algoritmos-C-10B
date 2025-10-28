@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    float* p = new float;  // reserva memoria
+    *p = 3.14;
+
+    cout << "Valor almacenado: " << *p << endl;
+    delete p;  // libera memoria
+    return 0;
+}
