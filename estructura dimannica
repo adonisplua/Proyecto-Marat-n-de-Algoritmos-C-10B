@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+struct Persona {
+    string nombre;
+    int edad;
+};
+
+int main() {
+    Persona* p = new Persona;
+    p->nombre = "Carlos";
+    p->edad = 30;
+
+    cout << "Nombre: " << p->nombre << ", Edad: " << p->edad << endl;
+
+    delete p;
+    return 0;
+}
