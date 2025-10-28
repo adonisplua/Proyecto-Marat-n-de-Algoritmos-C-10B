@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Node{ int val; Node* left; Node* right; Node(int v):val(v),left(nullptr),right(nullptr){}; };
+Node* insert(Node* root,int v){ if(!root) return new Node(v); if(v<root->val) root->left=insert(root->left,v); else root->right=insert(root->right,v); return root; }
+void inorder(Node* root){ if(!root) return; inorder(root->left); cout<<root->val<<" "; inorder(root->right); }
+int main(){
+    Node* root=nullptr; vector<int> a={5,2,8,1,3};
+    for(int x:a) root=insert(root,x);
+    inorder(root);
+    cout<<"\n";
+}
