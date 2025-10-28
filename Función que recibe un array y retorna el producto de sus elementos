@@ -1,0 +1,7 @@
+Función que recibe un array y retorna el producto de sus elementos
+long long productoArray(const vector<int>& arr) {
+    long long prod = 1;
+    for (int num : arr)
+        prod *= num;
+    return prod;
+}
