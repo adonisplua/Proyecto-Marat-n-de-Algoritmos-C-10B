@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int longestArithSeq(vector<int>& nums){
+    int n=nums.size(), ans=0;
+    vector<unordered_map<int,int>> dp(n);
+    for(int i=1;i<n;i++){
+        for(int j=0;j<i;j++){
+            int diff=nums[i]-nums[j];
+            dp[i][diff]=dp[j].count(diff)? dp[j][diff]+1 : 2;
+            ans=max(ans, dp[i][diff]);
+        }
+    }
+    return ans;
+}
+
+int main(){
+    vector<int> nums={3,6,9,12};
+    cout<<"Longest arithmetic subsequence: "<<longestArithSeq(nums)<<endl;
+    return 0;
+}
