@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+int main() {
+    Nodo* cabeza = nullptr;
+    Nodo* nuevo = new Nodo{10, nullptr};
+    cabeza = nuevo;
+
+    cout << "Primer nodo: " << cabeza->dato << endl;
+
+    delete cabeza;
+    return 0;
+}
