@@ -1,0 +1,10 @@
+int binary_search_iter(const vector<long long>& a, long long key) {
+    int l = 0, r = (int)a.size() - 1;
+    while (l <= r) {
+        int m = l + (r - l) / 2;
+        if (a[m] == key) return m;
+        if (a[m] < key) l = m + 1;
+        else r = m - 1;
+    }
+    return -1;
+}
