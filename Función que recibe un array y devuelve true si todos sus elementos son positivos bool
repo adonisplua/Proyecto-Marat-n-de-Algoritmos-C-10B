@@ -1,0 +1,7 @@
+ Función que recibe un array y devuelve true si todos sus elementos son positivos
+bool todosPositivos(const vector<int>& arr) {
+    for (int num : arr)
+        if (num <= 0)
+            return false;
+    return true;
+}
