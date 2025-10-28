@@ -1,0 +1,10 @@
+vector<long long> counting_sort(const vector<int>& a, int R) {
+    vector<int> cnt(R+1);
+    for (int x : a) ++cnt[x];
+    vector<long long> out;
+    out.reserve(a.size());
+    for (int v = 0; v <= R; ++v) {
+        for (int t = 0; t < cnt[v]; ++t) out.push_back(v);
+    }
+    return out;
+}
