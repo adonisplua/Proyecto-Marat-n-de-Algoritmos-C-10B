@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Item{ int val; string name; };
+int main(){
+    vector<Item> v={{5,"a"},{2,"b"},{8,"c"}};
+    priority_queue<Item, vector<Item>, 
+        function<bool(Item,Item)>> pq([](Item A, Item B){ return A.val<B.val; });
+    for(auto x:v) pq.push(x);
+    while(!pq.empty()){ cout<<pq.top().name<<" "; pq.pop(); }
+    cout<<"\n";
+}
