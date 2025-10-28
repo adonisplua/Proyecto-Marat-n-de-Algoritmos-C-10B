@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int timer=0;
+void dfsBridge(int v, int p, vector<vector<int>>& adj, vector<int>& tin, vector<int>& low, vector<bool>& vis){
+    vis[v]=true;
+    tin[v]=low[v]=++timer;
+    for(int u: adj[v]){
+        if(u==p) continue;
+        if(vis[u])
+            low[v]=min(low[v], tin[u]);
+        else{
+            dfsBridge(u,v,adj,tin,low,vis);
+            low[v]=min(low[v], low[u]);
+            if(low[u]>tin[v])
+                cout<<"Puente: "<<v<<" - "<<u<<endl;
+        }
+    }
+}
+
+void findBridges(vector<vector<int>>& adj){
+    int n=adj.size();
+    vector<int> tin(n,-1), low(n,-1);
+    vector<bool> vis(n,false);
+    for(int i=0;i<n;i++)
+        if(!vis[i]) dfsBridge(i,-1,adj,tin,low,vis);
+}
+
+int main(){
+    vector<vector<int>> adj={{1},{0,2},{1,3},{2,4,5},{3,5},{3,4}};
+    findBridges(adj);
+    return 0;
+}
