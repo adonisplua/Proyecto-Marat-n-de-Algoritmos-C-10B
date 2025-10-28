@@ -1,0 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    string text = "hola mundo hola C++";
+    map<string,int> freq;
+    string word;
+    stringstream ss(text);
+    while(ss >> word) freq[word]++;
+    for(auto &p : freq) cout << p.first << ": " << p.second << "\n";
+}
