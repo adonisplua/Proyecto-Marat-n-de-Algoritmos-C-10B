@@ -1,0 +1,7 @@
+Función que recibe un array y retorna el promedio redondeado al entero más cercano
+int promedioRedondeado(const vector<int>& arr) {
+    double prom = 0;
+    for (int x : arr) prom += x;
+    prom /= arr.size();
+    return round(prom);
+}
