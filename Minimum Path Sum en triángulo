@@ -1,0 +1,17 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int minPathTriangle(vector<vector<int>>& tri){
+    for(int i=tri.size()-2;i>=0;i--)
+        for(int j=0;j<=i;j++)
+            tri[i][j]+=min(tri[i+1][j], tri[i+1][j+1]);
+    return tri[0][0];
+}
+
+int main(){
+    vector<vector<int>> tri={{2},{3,4},{6,5,7},{4,1,8,3}};
+    cout<<"Suma mínima en triángulo: "<<minPathTriangle(tri)<<endl;
+    return 0;
+}
