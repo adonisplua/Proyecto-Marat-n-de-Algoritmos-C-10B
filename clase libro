@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+class Libro {
+private:
+    string titulo, autor;
+    int anio;
+public:
+    Libro(string t, string a, int an) : titulo(t), autor(a), anio(an) {}
+    void mostrar() {
+        cout << "Libro: " << titulo << " (" << anio << ") - Autor: " << autor << endl;
+    }
+};
+
+int main() {
+    Libro l("1984", "George Orwell", 1949);
+    l.mostrar();
+    return 0;
+}
