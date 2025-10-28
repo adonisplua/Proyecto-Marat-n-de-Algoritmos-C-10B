@@ -1,0 +1,7 @@
+Función que recibe un array de strings y devuelve la concatenación de todas las cadenas
+string concatenarStrings(const vector<string>& arr) {
+    string resultado = "";
+    for (const string& s : arr)
+        resultado += s;
+    return resultado;
+}
