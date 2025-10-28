@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+void dfs(int u, vector<vector<int>>& g, vector<bool>& vis){
+    vis[u] = true;
+    cout << u << " ";
+    for(int v : g[u])
+        if(!vis[v]) dfs(v, g, vis);
+}
+int main(){
+    int n = 5;
+    vector<vector<int>> g(n);
+    g[0] = {1,2}; g[1] = {0,3}; g[2] = {0,4};
+    vector<bool> vis(n,false);
+    dfs(0,g,vis);
+    cout << "\n";
+}
