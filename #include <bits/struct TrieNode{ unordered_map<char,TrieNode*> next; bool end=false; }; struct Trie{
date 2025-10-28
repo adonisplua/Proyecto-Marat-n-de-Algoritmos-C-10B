@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct TrieNode{ unordered_map<char,TrieNode*> next; bool end=false; };
+struct Trie{
+    TrieNode* root = new TrieNode();
+    void insert(const string& s){ TrieNode* cur=root; for(char c:s){ if(!cur->next[c]) cur->next[c]=new TrieNode(); cur=cur->next[c]; } cur->end=true; }
+    bool search(const string& s){ TrieNode* cur=root; for(char c:s){ if(!cur->next[c]) return false; cur=cur->next[c]; } return cur->end; }
+};
+int main(){
+    Trie t; t.insert("hola"); t.insert("hi");
+    cout << t.search("hola") << " " << t.search("hi") << " " << t.search("hey") << "\n";
+}
