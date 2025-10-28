@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+struct Vector {
+    int* datos;
+    int tam;
+    int capacidad;
+};
+
+void inicializar(Vector& v) {
+    v.capacidad = 2;
+    v.tam = 0;
+    v.datos = new int[v.capacidad];
+}
+
+void insertar(Vector& v, int valor) {
+    if (v.tam == v.capacidad) {
+        int* nuevo = new int[v.capacidad * 2];
+        for (int i = 0; i < v.tam; i++)
+            nuevo[i] = v.datos[i];
+        delete[] v.datos;
+        v.datos = nuevo;
+        v.capacidad *= 2;
+    }
+    v.datos[v.tam++] = valor;
+}
+
+void mostrar(const Vector& v) {
+    for (int i = 0; i < v.tam; i++)
+        cout << v.datos[i] << " ";
+    cout << endl;
+}
+
+void liberar(Vector& v) {
+    delete[] v.datos;
+    v.tam = v.capacidad = 0;
+}
+
+int main() {
+    Vector v;
+    inicializar(v);
+    insertar(v, 10);
+    insertar(v, 20);
+    insertar(v, 30);
+    mostrar(v);
+    liberar(v);
+    return 0;
+}
