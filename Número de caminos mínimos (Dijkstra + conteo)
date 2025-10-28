@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+using namespace std;
+
+void countShortestPaths(vector<vector<pair<int,int>>>& adj, int s){
+    int n=adj.size();
+    vector<int> dist(n,INT_MAX), ways(n,0);
+    dist[s]=0; ways[s]=1;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+    pq.push({0,s});
+    while(!pq.empty()){
+        auto [d,u]=pq.top(); pq.pop();
+        if(d>dist[u]) continue;
+        for(auto [v,w]: adj[u]){
+            if(dist[v]>dist[u]+w){
+                dist[v]=dist[u]+w;
+                ways[v]=ways[u];
+                pq.push({dist[v],v});
+            } else if(dist[v]==dist[u]+w)
+                ways[v]+=ways[u];
+        }
+    }
+    for(int i=0;i<n;i++)
+        cout<<"Nodo "<<i<<" - Dist="<<dist[i]<<", Caminos="<<ways[i]<<endl;
+}
+
+int main(){
+    vector<vector<pair<int,int>>> adj={
+        {{1,1},{2,2}},{{2,1},{3,3}},{{3,1}},{}};
+    countShortestPaths(adj,0);
+    return 0;
+}
