@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 3;
+    int* arr = new int[n]{1, 2, 3};
+    int nuevoTam = n * 2;
+
+    int* nuevo = new int[nuevoTam];
+    for (int i = 0; i < n; i++)
+        nuevo[i] = arr[i];
+
+    for (int i = n; i < nuevoTam; i++)
+        nuevo[i] = 0;
+
+    delete[] arr;
+    arr = nuevo;
+
+    for (int i = 0; i < nuevoTam; i++)
+        cout << arr[i] << " ";
+
+    delete[] arr;
+    return 0;
+}
