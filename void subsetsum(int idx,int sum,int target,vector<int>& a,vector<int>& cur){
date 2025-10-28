@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+void subsetsum(int idx,int sum,int target,vector<int>& a,vector<int>& cur){
+    if(sum==target){ for(int x:cur) cout<<x<<" "; cout<<"\n"; return; }
+    if(idx==a.size() || sum>target) return;
+    cur.push_back(a[idx]); subsetsum(idx+1,sum+a[idx],target,a,cur);
+    cur.pop_back(); subsetsum(idx+1,sum,target,a,cur);
+}
+int main(){
+    vector<int> a={2,3,5,7};
+    vector<int> cur; subsetsum(0,0,10,a,cur);
+}
