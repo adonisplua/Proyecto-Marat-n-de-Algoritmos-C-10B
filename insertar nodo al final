@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+void insertarFinal(Nodo*& cabeza, int valor) {
+    Nodo* nuevo = new Nodo{valor, nullptr};
+    if (!cabeza)
+        cabeza = nuevo;
+    else {
+        Nodo* temp = cabeza;
+        while (temp->siguiente)
+            temp = temp->siguiente;
+        temp->siguiente = nuevo;
+    }
+}
+
+void mostrar(Nodo* cabeza) {
+    while (cabeza) {
+        cout << cabeza->dato << " -> ";
+        cabeza = cabeza->siguiente;
+    }
+    cout << "NULL\n";
+}
+
+int main() {
+    Nodo* lista = nullptr;
+    insertarFinal(lista, 5);
+    insertarFinal(lista, 15);
+    insertarFinal(lista, 25);
+    mostrar(lista);
+    return 0;
+}
