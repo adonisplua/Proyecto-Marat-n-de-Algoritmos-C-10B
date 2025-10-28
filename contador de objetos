@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+class Objeto {
+private:
+    static int contador;
+public:
+    Objeto() { contador++; }
+    ~Objeto() { contador--; }
+
+    static void mostrarConteo() {
+        cout << "Objetos vivos: " << contador << endl;
+    }
+};
+
+int Objeto::contador = 0;
+
+int main() {
+    Objeto a, b;
+    Objeto::mostrarConteo();
+    {
+        Objeto c;
+        Objeto::mostrarConteo();
+    }
+    Objeto::mostrarConteo();
+    return 0;
+}
