@@ -1,0 +1,8 @@
+ Función que recibe un array de strings y retorna el string más largo
+string masLargo(const vector<string>& arr) {
+    string largo = "";
+    for (const string& s : arr)
+        if (s.length() > largo.length())
+            largo = s;
+    return largo;
+}
