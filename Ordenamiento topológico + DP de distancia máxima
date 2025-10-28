@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <climits>
+using namespace std;
+
+void topoDFS(int v, vector<vector<pair<int,int>>>& adj, vector<bool>& vis, stack<int>& st){
+    vis[v]=true;
+    for(auto [u,w]:adj[v])
+        if(!vis[u]) topoDFS(u,adj,vis,st);
+    st.push(v);
+}
+
+void longestPathDAG(vector<vector<pair<int,int>>>& adj, int s){
+    int n=adj.size();
+    stack<int> st;
+    vector<bool> vis(n,false);
+    for(int i=0;i<n;i++)
+        if(!vis[i]) topoDFS(i,adj,vis,st);
+    vector<int> dist(n,INT_MIN);
+    dist[s]=0;
+    while(!st.empty()){
+        int u=st.top(); st.pop();
+        if(dist[u]!=INT_MIN)
+            for(auto [v,w]:adj[u])
+                dist[v]=max(dist[v],dist[u]+w);
+    }
+    cout<<"Distancias más largas desde "<<s<<": ";
+    for(int d:dist) cout<<(d==INT_MIN?-999:d)<<" ";
+    cout<<endl;
+}
+
+int main(){
+    vector<vector<pair<int,int>>> adj={
+        {{1,5},{2,3}},{{3,6},{2,2}},{{4,4},{5,2}},{{4,1},{5,2}},{{5,1}},{}};
+    longestPathDAG(adj,0);
+    return 0;
+}
