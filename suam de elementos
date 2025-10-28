@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Tamaño del arreglo: ";
+    cin >> n;
+
+    int* arr = new int[n];
+    int suma = 0;
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        suma += arr[i];
+    }
+
+    cout << "Suma = " << suma << endl;
+    delete[] arr;
+    return 0;
+}
