@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Bloque {
+    bool libre;
+    int inicio;
+    int tam;
+};
+
+int main() {
+    const int MEM = 100;
+    char* memoria = new char[MEM];
+    vector<Bloque> bloques = {{true, 0, MEM}};
+
+    auto asignar = [&](int tam) -> int {
+        for (auto& b : bloques) {
+            if (b.libre && b.tam >= tam) {
+                int dir = b.inicio;
+                b.inicio += tam;
+                b.tam -= tam;
+                if (b.tam == 0) b.libre = false;
+                return dir;
+            }
+        }
+        return -1;
+    };
+
+    auto liberar = [&](int dir, int tam) {
+        bloques.push_back({true, dir, tam});
+    };
+
+    int a = asignar(20);
+    int b = asignar(30);
+    cout << "Asignado bloque A en pos " << a << ", B en pos " << b << endl;
+
+    liberar(a, 20);
+    liberar(b, 30);
+
+    cout << "Bloques liberados." << endl;
+    delete[] memoria;
+    return 0;
+}
