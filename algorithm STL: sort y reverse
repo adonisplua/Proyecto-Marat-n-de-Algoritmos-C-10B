@@ -1,0 +1,13 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> v = {4,1,3,5,2};
+    sort(v.begin(), v.end());         // orden ascendente
+    reverse(v.begin(), v.end());      // revertir
+    for(int x : v) cout << x << " ";
+    cout << endl;
+    return 0;
+}
