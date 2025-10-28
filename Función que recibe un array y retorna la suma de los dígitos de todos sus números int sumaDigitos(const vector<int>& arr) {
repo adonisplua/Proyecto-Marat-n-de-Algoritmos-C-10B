@@ -1,0 +1,21 @@
+Función que recibe un array y retorna la suma de los dígitos de todos sus números
+int sumaDigitos(const vector<int>& arr) {
+    int suma = 0;
+    for (int num : arr) {
+        num = abs(num);
+        while (num > 0) {
+            suma += num % 10;
+            num /= 10;
+        }
+    }
+    return suma;
+}
+
+// 39. Función que recibe un array y un valor, y retorna cuántas veces aparece ese valor en posiciones pares
+int contarEnPosPares(const vector<int>& arr, int val) {
+    int cont = 0;
+    for (size_t i = 0; i < arr.size(); i += 2)
+        if (arr[i] == val)
+            cont++;
+    return cont;
+}
