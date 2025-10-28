@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+void eliminar(Nodo*& cabeza, int valor) {
+    Nodo* actual = cabeza;
+    Nodo* anterior = nullptr;
+
+    while (actual && actual->dato != valor) {
+        anterior = actual;
+        actual = actual->siguiente;
+    }
+
+    if (!actual) return;
+
+    if (!anterior)
+        cabeza = actual->siguiente;
+    else
+        anterior->siguiente = actual->siguiente;
+
+    delete actual;
+}
+
+void mostrar(Nodo* cabeza) {
+    while (cabeza) {
+        cout << cabeza->dato << " -> ";
+        cabeza = cabeza->siguiente;
+    }
+    cout << "NULL\n";
+}
+
+int main() {
+    Nodo* lista = nullptr;
+    lista = new Nodo{10, new Nodo{20, new Nodo{30, nullptr}}};
+
+    mostrar(lista);
+    eliminar(lista, 20);
+    mostrar(lista);
+    return 0;
+}
