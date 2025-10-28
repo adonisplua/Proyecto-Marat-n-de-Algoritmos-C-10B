@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int contarOcurrencias(int arr[], int n, int x) {
+    int count=0;
+    for(int i=0;i<n;i++)
+        if(arr[i]==x) count++;
+    return count;
+}
+
+int main() {
+    int arr[]={1,2,3,2,2};
+    int n=5;
+    int x=2;
+    cout << "Ocurrencias de " << x << ": " << contarOcurrencias(arr,n,x) << endl;
+    return 0;
+}
