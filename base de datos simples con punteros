@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+struct Persona {
+    string nombre;
+    int edad;
+};
+
+int main() {
+    int n;
+    cout << "Cantidad de personas: ";
+    cin >> n;
+
+    Persona* base = new Persona[n];
+
+    for (int i = 0; i < n; i++) {
+        cout << "Nombre: ";
+        cin >> base[i].nombre;
+        cout << "Edad: ";
+        cin >> base[i].edad;
+    }
+
+    cout << "\n-- Base de Datos --\n";
+    for (int i = 0; i < n; i++)
+        cout << base[i].nombre << " (" << base[i].edad << " años)\n";
+
+    delete[] base;
+    return 0;
+}
