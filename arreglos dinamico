@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+struct Persona {
+    string nombre;
+    int edad;
+};
+
+int main() {
+    int n = 3;
+    Persona* lista = new Persona[n];
+
+    for (int i = 0; i < n; i++) {
+        cout << "Nombre: ";
+        cin >> lista[i].nombre;
+        cout << "Edad: ";
+        cin >> lista[i].edad;
+    }
+
+    cout << "\n--- Lista ---\n";
+    for (int i = 0; i < n; i++)
+        cout << lista[i].nombre << " (" << lista[i].edad << ")\n";
+
+    delete[] lista;
+    return 0;
+}
