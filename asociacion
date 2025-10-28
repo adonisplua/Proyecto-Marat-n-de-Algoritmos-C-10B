@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Curso {
+public:
+    string nombre;
+    Curso(string n) : nombre(n) {}
+};
+
+class Alumno {
+public:
+    string nombre;
+    vector<Curso*> cursos;
+
+    Alumno(string n) : nombre(n) {}
+
+    void inscribir(Curso* c) { cursos.push_back(c); }
+
+    void mostrar() {
+        cout << nombre << " está inscrito en: ";
+        for (auto c : cursos) cout << c->nombre << " ";
+        cout << endl;
+    }
+};
+
+int main() {
+    Curso c1("Matemáticas"), c2("Historia");
+    Alumno a("Pedro");
+    a.inscribir(&c1);
+    a.inscribir(&c2);
+    a.mostrar();
+    return 0;
+}
