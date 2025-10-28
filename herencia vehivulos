@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Vehiculo {
+public:
+    virtual void mover() { cout << "El vehículo se mueve.\n"; }
+};
+
+class Coche : public Vehiculo {
+public:
+    void mover() override { cout << "El coche avanza por la carretera.\n"; }
+};
+
+class Moto : public Vehiculo {
+public:
+    void mover() override { cout << "La moto acelera rápidamente.\n"; }
+};
+
+int main() {
+    Vehiculo* v1 = new Coche();
+    Vehiculo* v2 = new Moto();
+
+    v1->mover();
+    v2->mover();
+
+    delete v1;
+    delete v2;
+    return 0;
+}
