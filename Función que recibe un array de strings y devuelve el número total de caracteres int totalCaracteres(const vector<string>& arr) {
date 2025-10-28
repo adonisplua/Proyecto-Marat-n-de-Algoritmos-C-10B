@@ -1,0 +1,7 @@
+ Función que recibe un array de strings y devuelve el número total de caracteres
+int totalCaracteres(const vector<string>& arr) {
+    int total = 0;
+    for (const string& s : arr)
+        total += s.size();
+    return total;
+}
