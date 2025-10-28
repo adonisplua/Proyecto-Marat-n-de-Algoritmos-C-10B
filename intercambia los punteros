@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+struct Persona {
+    string nombre;
+    int edad;
+};
+
+void intercambiar(Persona* a, Persona* b) {
+    Persona temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    Persona p1 = {"Luis", 20};
+    Persona p2 = {"Maria", 25};
+    intercambiar(&p1, &p2);
+
+    cout << "p1: " << p1.nombre << ", p2: " << p2.nombre << endl;
+    return 0;
+}
