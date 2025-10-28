@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int countSubseq(string s){
+    int a=0,b=0,c=0;
+    for(char ch:s){
+        if(ch=='a') a=1+2*a;
+        else if(ch=='b') b=a+2*b;
+        else if(ch=='c') c=b+2*c;
+    }
+    return c;
+}
+
+int main(){
+    string s="abcabc";
+    cout<<"Subsecuencias de tipo a^i b^j c^k: "<<countSubseq(s)<<endl;
+    return 0;
+}
