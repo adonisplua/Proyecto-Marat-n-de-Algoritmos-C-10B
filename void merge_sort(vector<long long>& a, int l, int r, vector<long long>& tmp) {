@@ -1,0 +1,18 @@
+void merge_sort(vector<long long>& a, int l, int r, vector<long long>& tmp) {
+    if (r - l <= 1) return;
+    int m = (l + r) >> 1;
+    merge_sort(a, l, m, tmp);
+    merge_sort(a, m, r, tmp);
+    int i = l, j = m, k = l;
+    while (i < m && j < r) {
+        if (a[i] <= a[j]) tmp[k++] = a[i++];
+        else tmp[k++] = a[j++];
+    }
+    while (i < m) tmp[k++] = a[i++];
+    while (j < r) tmp[k++] = a[j++];
+    for (int x = l; x < r; ++x) a[x] = tmp[x];
+}
+void mergesort(vector<long long>& a) {
+    vector<long long> tmp(a.size());
+    merge_sort(a, 0, (int)a.size(), tmp);
+}
