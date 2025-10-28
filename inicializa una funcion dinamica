@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+struct Persona {
+    string nombre;
+    int edad;
+};
+
+void inicializar(Persona* p, string nom, int e) {
+    p->nombre = nom;
+    p->edad = e;
+}
+
+int main() {
+    Persona* p = new Persona;
+    inicializar(p, "Lucia", 19);
+    cout << p->nombre << " tiene " << p->edad << " años." << endl;
+    delete p;
+    return 0;
+}
