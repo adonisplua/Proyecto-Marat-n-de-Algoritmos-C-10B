@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+void insertarInicio(Nodo*& cabeza, int valor) {
+    Nodo* nuevo = new Nodo{valor, cabeza};
+    cabeza = nuevo;
+}
+
+void mostrar(Nodo* cabeza) {
+    while (cabeza) {
+        cout << cabeza->dato << " -> ";
+        cabeza = cabeza->siguiente;
+    }
+    cout << "NULL\n";
+}
+
+int main() {
+    Nodo* lista = nullptr;
+    insertarInicio(lista, 10);
+    insertarInicio(lista, 20);
+    insertarInicio(lista, 30);
+    mostrar(lista);
+    return 0;
+}
