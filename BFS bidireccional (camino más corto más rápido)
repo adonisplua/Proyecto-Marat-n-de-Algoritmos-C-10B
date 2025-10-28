@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+using namespace std;
+
+bool bidirectionalBFS(vector<vector<int>>& adj, int src, int dest){
+    unordered_set<int> front1={src}, front2={dest}, vis1={src}, vis2={dest};
+    while(!front1.empty() && !front2.empty()){
+        unordered_set<int> next;
+        for(int u:front1){
+            if(front2.count(u)) return true;
+            for(int v:adj[u])
+                if(!vis1.count(v)){ vis1.insert(v); next.insert(v); }
+        }
+        front1=next;
+        if(front1.size()>front2.size()) swap(front1,front2), swap(vis1,vis2);
+    }
+    return false;
+}
+
+int main(){
+    vector<vector<int>> adj={{1,2},{0,3},{0,3},{1,2}};
+    cout<<"¿Camino entre 0 y 3? "<<(bidirectionalBFS(adj,0,3)?"Sí":"No")<<endl;
+    return 0;
+}
