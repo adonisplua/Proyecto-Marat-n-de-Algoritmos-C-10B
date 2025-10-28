@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+int countPathsDAG(vector<vector<int>>& adj, int s, int t){
+    int n=adj.size();
+    vector<int> indeg(n,0);
+    for(int i=0;i<n;i++) for(int v:adj[i]) indeg[v]++;
+    queue<int> q;
+    for(int i=0;i<n;i++) if(indeg[i]==0) q.push(i);
+    vector<int> paths(n,0);
+    paths[s]=1;
+    while(!q.empty()){
+        int u=q.front(); q.pop();
+        for(int v: adj[u]){
+            paths[v]+=paths[u];
+            indeg[v]--;
+            if(indeg[v]==0) q.push(v);
+        }
+    }
+    return paths[t];
+}
+
+int main(){
+    vector<vector<int>> adj={{1,2},{3},{3},{}};
+    cout<<"Caminos de 0 a 3: "<<countPathsDAG(adj,0,3)<<endl;
+    return 0;
+}
