@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = nullptr;
+
+    if (ptr == nullptr)
+        cout << "El puntero no apunta a nada." << endl;
+
+    int x = 5;
+    ptr = &x;
+
+    if (ptr != nullptr)
+        cout << "Ahora apunta a: " << *ptr << endl;
+
+    return 0;
+}
