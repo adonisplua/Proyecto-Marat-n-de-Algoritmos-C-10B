@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool dfsCycleDir(int v, vector<vector<int>>& adj, vector<int>& state){
+    state[v]=1; // en la pila
+    for(int u: adj[v]){
+        if(state[u]==1) return true;
+        if(state[u]==0 && dfsCycleDir(u,adj,state)) return true;
+    }
+    state[v]=2;
+    return false;
+}
+
+bool hasCycleDirected(vector<vector<int>>& adj){
+    vector<int> state(adj.size(),0);
+    for(int i=0;i<adj.size();i++)
+        if(state[i]==0 && dfsCycleDir(i,adj,state))
+            return true;
+    return false;
+}
+
+int main(){
+    vector<vector<int>> adj={{1},{2},{0,3},{4},{}};
+    cout<<"¿Ciclo dirigido? "<<(hasCycleDirected(adj)?"Sí":"No")<<endl;
+    return 0;
+}
