@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int contarVocales(char* cad) {
+    int cont = 0;
+    for (int i = 0; cad[i] != '\0'; i++) {
+        char c = tolower(cad[i]);
+        if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u')
+            cont++;
+    }
+    return cont;
+}
+
+int main() {
+    char* texto = new char[100];
+    cout << "Ingrese texto: ";
+    cin.getline(texto, 100);
+    cout << "Vocales: " << contarVocales(texto) << endl;
+    delete[] texto;
+    return 0;
+}
