@@ -1,0 +1,9 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    priority_queue<int> pq;
+    vector<int> a={5,1,8,3};
+    for(int x:a) pq.push(x);
+    while(!pq.empty()){ cout<<pq.top()<<" "; pq.pop(); }
+    cout<<"\n";
+}
