@@ -1,0 +1,11 @@
+ Función que recibe dos arrays y retorna un array con los elementos que no están en el otro (diferencia simétrica)
+vector<int> diferenciaSimetrica(const vector<int>& a, const vector<int>& b) {
+    vector<int> res;
+    for (int x : a)
+        if (find(b.begin(), b.end(), x) == b.end())
+            res.push_back(x);
+    for (int x : b)
+        if (find(a.begin(), a.end(), x) == a.end())
+            res.push_back(x);
+    return res;
+}
