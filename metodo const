@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+class Punto {
+private:
+    double x, y;
+    static int total;
+public:
+    Punto(double x, double y) : x(x), y(y) { total++; }
+
+    void mostrar() const { // método constante
+        cout << "(" << x << ", " << y << ")" << endl;
+    }
+
+    static int getTotal() { return total; }
+};
+
+int Punto::total = 0;
+
+int main() {
+    Punto p1(1,2), p2(3,4);
+    p1.mostrar();
+    p2.mostrar();
+    cout << "Total de puntos: " << Punto::getTotal() << endl;
+    return 0;
+}
