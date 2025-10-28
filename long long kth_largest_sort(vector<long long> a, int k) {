@@ -1,0 +1,5 @@
+long long kth_largest_sort(vector<long long> a, int k) {
+    sort(a.begin(), a.end(), greater<long long>());
+    if (k-1 >= 0 && k-1 < (int)a.size()) return a[k-1];
+    throw out_of_range("k fuera de rango");
+}
