@@ -1,0 +1,8 @@
+ Función que recibe un array y retorna el máximo valor impar
+int maxImpar(const vector<int>& arr) {
+    int maxVal = INT_MIN;
+    for (int x : arr)
+        if (x % 2 != 0 && x > maxVal)
+            maxVal = x;
+    return maxVal == INT_MIN ? -1 : maxVal;
+}
