@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+void invertirCadena(string s, int i = 0) {
+    if (i == s.length()) return;
+    invertirCadena(s, i + 1);
+    cout << s[i];
+}
+
+int main() {
+    string s = "Hola";
+    cout << "Cadena invertida: ";
+    invertirCadena(s);
+    cout << endl;
+    return 0;
+}
