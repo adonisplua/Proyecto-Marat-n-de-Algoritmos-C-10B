@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+struct Edge{int u,v,w;};
+
+void bellmanFord(vector<Edge>& edges, int V, int src){
+    vector<int> dist(V,INT_MAX);
+    dist[src]=0;
+
+    for(int i=1;i<V;i++)
+        for(auto &e:edges)
+            if(dist[e.u]!=INT_MAX && dist[e.u]+e.w<dist[e.v])
+                dist[e.v]=dist[e.u]+e.w;
+
+    for(auto &e:edges)
+        if(dist[e.u]!=INT_MAX && dist[e.u]+e.w<dist[e.v]){
+            cout<<"Ciclo negativo detectado"<<endl;
+            return;
+        }
+
+    cout<<"Distancias desde "<<src<<": ";
+    for(int d:dist) cout<<d<<" ";
+    cout<<endl;
+}
+
+int main(){
+    int V=5;
+    vector<Edge> edges={{0,1,-1},{0,2,4},{1,2,3},{1,3,2},{1,4,2},{3,2,5},{3,1,1},{4,3,-3}};
+    bellmanFord(edges,V,0);
+    return 0;
+}
