@@ -1,0 +1,11 @@
+Función que recibe un array y retorna el índice del elemento con valor mínimo
+int indiceMinimo(const vector<int>& arr) {
+    int minVal = arr[0], minInd = 0;
+    for (size_t i = 1; i < arr.size(); i++) {
+        if (arr[i] < minVal) {
+            minVal = arr[i];
+            minInd = i;
+        }
+    }
+    return minInd;
+}
