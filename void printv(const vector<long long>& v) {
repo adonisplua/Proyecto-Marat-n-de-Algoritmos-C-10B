@@ -1,0 +1,8 @@
+void printv(const vector<long long>& v) {
+    for (auto &x : v) cout << x << " ";
+    cout << "\n";
+}
+void printv(const vector<string>& v) {
+    for (auto &s : v) cout << s << " ";
+    cout << "\n";
+}
