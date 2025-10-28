@@ -1,0 +1,10 @@
+ Función que recibe un array y retorna la suma acumulada en otro array
+vector<int> sumaAcumulada(const vector<int>& arr) {
+    vector<int> suma;
+    int acumulado = 0;
+    for (int num : arr) {
+        acumulado += num;
+        suma.push_back(acumulado);
+    }
+    return suma;
+}
