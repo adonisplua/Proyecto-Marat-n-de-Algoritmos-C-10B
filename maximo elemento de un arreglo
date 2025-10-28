@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int maxArreglo(int arr[], int n) {
+    if (n == 1) return arr[0];
+    return max(arr[n - 1], maxArreglo(arr, n - 1));
+}
+
+int main() {
+    int arr[] = {3, 7, 2, 9, 5};
+    cout << "Máximo: " << maxArreglo(arr, 5) << endl;
+    return 0;
+}
