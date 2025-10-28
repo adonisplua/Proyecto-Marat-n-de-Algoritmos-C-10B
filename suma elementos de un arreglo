@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int sumaArreglo(int arr[], int n) {
+    if (n == 0) return 0;
+    return arr[n - 1] + sumaArreglo(arr, n - 1);
+}
+
+int main() {
+    int arr[] = {2, 4, 6, 8};
+    cout << "Suma: " << sumaArreglo(arr, 4) << endl;
+    return 0;
+}
