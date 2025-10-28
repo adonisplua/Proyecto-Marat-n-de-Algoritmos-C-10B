@@ -1,0 +1,8 @@
+Función que suma dos arrays elemento a elemento y retorna un nuevo array
+vector<int> sumaArrays(const vector<int>& a, const vector<int>& b) {
+    vector<int> resultado;
+    int n = min(a.size(), b.size());
+    for (int i = 0; i < n; i++)
+        resultado.push_back(a[i] + b[i]);
+    return resultado;
+}
