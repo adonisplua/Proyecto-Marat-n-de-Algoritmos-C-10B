@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void countingSortChar(char arr[]){
+    int n=strlen(arr);
+    int count[256]={0};
+    for(int i=0;i<n;i++) count[arr[i]]++;
+    int idx=0;
+    for(int i=0;i<256;i++)
+        while(count[i]--) arr[idx++]=i;
+}
+
+int main(){
+    char arr[]="programacion";
+    countingSortChar(arr);
+    cout<<arr;
+    return 0;
+}
