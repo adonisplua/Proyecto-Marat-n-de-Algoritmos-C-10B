@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool bpm(vector<vector<int>>& bpGraph, int u, vector<bool>& seen, vector<int>& matchR){
+    for(int v=0; v<bpGraph[0].size(); v++){
+        if(bpGraph[u][v] && !seen[v]){
+            seen[v]=true;
+            if(matchR[v]<0 || bpm(bpGraph, matchR[v], seen, matchR)){
+                matchR[v]=u;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int maxBPM(vector<vector<int>>& bpGraph){
+    int n=bpGraph.size(), m=bpGraph[0].size();
+    vector<int> matchR(m,-1);
+    int result=0;
+    for(int u=0; u<n; u++){
+        vector<bool> seen(m,false);
+        if(bpm(bpGraph,u,seen,matchR)) result++;
+    }
+    return result;
+}
+
+int main(){
+    vector<vector<int>> bpGraph={
+        {1,1,0,0},
+        {0,1,0,1},
+        {0,0,1,0}};
+    cout<<"Máximo matching bipartito: "<<maxBPM(bpGraph)<<endl;
+    return 0;
+}
