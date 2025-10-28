@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero = 25;
+    int* ptr = &numero;
+
+    cout << "Direccion: " << ptr << endl;
+    cout << "Valor: " << *ptr << endl;
+    return 0;
+}
