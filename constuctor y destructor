@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+class Objeto {
+public:
+    Objeto() { cout << "Objeto creado\n"; }
+    ~Objeto() { cout << "Objeto destruido\n"; }
+};
+
+int main() {
+    Objeto o;
+    return 0;
+}
