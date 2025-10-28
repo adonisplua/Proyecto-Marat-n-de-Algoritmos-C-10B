@@ -1,0 +1,11 @@
+Función que recibe un array y retorna un array con elementos al cuadrado
+vector<int> alCuadrado(const vector<int>& arr) {
+    vector<int> res;
+    for (int x : arr)
+        res.push_back(x * x);
+    return res;
+vector<int> alCuadrado(const vector<int>& arr) {
+    vector<int> res;
+    for (int x : arr)
+        res.push_back(x * x);
+    return res;
