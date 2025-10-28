@@ -1,0 +1,14 @@
+#include <iostream>
+#include <utility>
+using namespace std;
+
+int main() {
+    pair<int, string> p = {1, "Hola"};
+    cout << "Primero: " << p.first << ", Segundo: " << p.second << endl;
+
+    pair<int, string> q;
+    q.first = 2;
+    q.second = "Mundo";
+    cout << "Primero: " << q.first << ", Segundo: " << q.second << endl;
+    return 0;
+}
