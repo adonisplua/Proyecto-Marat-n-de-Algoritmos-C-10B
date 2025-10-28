@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* izq;
+    Nodo* der;
+};
+
+void liberar(Nodo* raiz) {
+    if (!raiz) return;
+    liberar(raiz->izq);
+    liberar(raiz->der);
+    delete raiz;
+}
+
+Nodo* crear(int valor) {
+    return new Nodo{valor, nullptr, nullptr};
+}
+
+int main() {
+    Nodo* raiz = crear(10);
+    raiz->izq = crear(5);
+    raiz->der = crear(15);
+
+    liberar(raiz);
+    cout << "Memoria del árbol liberada." << endl;
+    return 0;
+}
