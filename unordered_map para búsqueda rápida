@@ -1,0 +1,11 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+    unordered_map<string,int> umap;
+    umap["manzana"]=10;
+    umap["banana"]=5;
+    cout << "Manzanas: " << umap["manzana"] << endl;
+    return 0;
+}
